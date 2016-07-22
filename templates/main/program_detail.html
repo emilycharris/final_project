@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>{{object.name}}</h3>
+<hr>
+<br>
+<h5>Rating: {{object.rating}}</h5><br>
+<h5>Runtime: {{object.runtime}}</h5><br>
+<h5>Thumbnail: {{object.thumbnail}}</h5><br>
+<h5>Banner: {{object.banner}}</h5><br>
+<h5>Overview: {{object.overview}}</h5><br>
+<h5>Common Sense Media (CSM) Review: {{object.review}}</h5><br>
+<h5>CSM Positive Message: {{object.positive_message}}</h5><br>
+<h5>CSM Positive Role Model: {{object.positive_role_model}}</h5><br>
+<h5>CSM Violence Warning: {{object.violence}}</h5><br>
+<h5>CSM Sexual Content Warning: {{object.sex}}</h5><br>
+<h5>CSM Language Warning: {{object.language}}</h5><br>
+<h5>CSM Consumerism Warning: {{object.consumerism}}</h5><br>
+<h5>CSM Substance Warning: {{object.substance}}</h5><br>
+
+
+{% endblock %}
