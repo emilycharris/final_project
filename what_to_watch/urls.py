@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from main.views import IndexView, CreateUserView, ProfileUpdateView, ProgramListView, ProgramDetailView
+from main.views import IndexView, CreateUserView, ProfileUpdateView, ProgramListView, ProgramDetailView, QueueCreateView
 from django.contrib.auth.decorators import login_required
 from django.conf.urls.static import static
 from django.conf import settings
@@ -29,5 +29,6 @@ urlpatterns = [
     url(r'^accounts/profile/$', login_required(ProfileUpdateView.as_view()), name="profile_update_view"),
     url(r'^program_list', ProgramListView.as_view(), name='program_list_view'),
     url(r'^program_detail/(?P<pk>\d+)/$', ProgramDetailView.as_view(), name='program_detail_view'),
+    url(r'^queue_create/$', login_required(QueueCreateView.as_view), name='queue_create_view'),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

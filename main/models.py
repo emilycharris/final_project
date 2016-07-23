@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 # Create your models here.
 
@@ -15,10 +17,14 @@ class Rating(models.Model):
 
 
 class Profile(models.Model):
-    user = models.ForeignKey('auth.User')
+    user = models.OneToOneField('auth.User')
     parent=models.ForeignKey('self', null=True, blank=True, related_name='child')
-    rating_limit = models.ForeignKey(Rating)
-    email = models.EmailField()
+    rating_limit = models.ForeignKey(Rating, null=True, blank=True)
+    email = models.EmailField(blank=True, null=True)
+
+    def __str__(self):
+        return str(self.user)
+
 
 class Program(models.Model):
     name = models.CharField(max_length=100)
@@ -37,11 +43,42 @@ class Program(models.Model):
     consumerism = models.TextField()
     substance = models.TextField()
 
+    @property
+    def thumbnail_url(self):
+        if self.thumbnail:
+            return self.thumbnail.url
+        return "http://www.clker.com/cliparts/f/Z/G/4/h/Q/no-image-available-md.png"
+    def banner_url(self):
+        if self.banner:
+            return self.banner.url
+        return "http://www.clker.com/cliparts/f/Z/G/4/h/Q/no-image-available-md.png"
+
+
+
+
     def __str__(self):
         return self.name
 
 
 class Queue(models.Model):
-    user = models.ForeignKey('auth.User')
+    user = models.OneToOneField('auth.User')
+
+    def __str__(self):
+        return str(self.user)
+
+class QueueProgram(models.Model):  #thru table between queue and program
+    queue = models.ForeignKey(Queue)
     program = models.ForeignKey(Program)
     network = models.CharField(max_length=100)
+
+    def __str__(self):
+        return str(self.program)
+
+
+
+@receiver(post_save, sender='auth.User')
+def create_user_profile(**kwargs):
+    created = kwargs.get("created")
+    instance = kwargs.get("instance")
+    if created:
+        Profile.objects.create(user=instance)

@@ -1,5 +1,15 @@
 {% extends "base.html" %}
-
 {% block content %}
-  <a href="{% url 'program_list_view' %}">Program List</a>
+{% if request.user.is_authenticated %}
+
+
+
+
+{% else %}
+<br>
+<br>
+
+<h1 class=""><em>Welcome!</em></h1><h4 class=""><em>Please sign in or register using links above</em></h4>
+{% endif %}
+
 {% endblock %}
