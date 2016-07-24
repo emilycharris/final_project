@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'rest_framework',
-    'bootstrapform'
+    'bootstrapform',
+    'bootstrap_pagination',
+
 
 ]
 

@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-
-<h3>{{object.name}}</h3>
+<img src="{{object.banner}}" alt="" class='centered' enctype=multipart/form-data/><hr>
+<h1 class='heading'>{{object.name}}</h1>
 <hr>
 <br>
 <h5>Rating: {{object.rating}}</h5><br>
 <h5>Runtime: {{object.runtime}}</h5><br>
-<h5>Thumbnail: {{object.thumbnail}}</h5><br>
-<h5>Banner: {{object.banner}}</h5><br>
+<h5>Thumbnail: <img class='thumbnail' src="{{object.thumbnail}}" alt="" enctype=multipart/form-data/></h5><br>
 <h5>Overview: {{object.overview}}</h5><br>
 <h5>Common Sense Media (CSM) Review: {{object.review}}</h5><br>
 <h5>CSM Positive Message: {{object.positive_message}}</h5><br>

@@ -26,7 +26,10 @@
           {% else %}
           <a class="navbar-brand" href="{% url 'index_view' %}">whatshouldwewatch.online</a>
           {% endif %}
+
         </div>
+
+
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -58,6 +61,21 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+
+
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2 col-md-6 col-md-offset-3 form-group">
+            <label for="search_box" class="control-label"></label>
+            <form action="{% url 'program_list_view' %}" method="get">
+                <div class="input-group">
+                    <input id="search_box" type="text" class="form-control" name="search" placeholder='Search Program Title'>
+                    <span class="input-group-btn">
+                        <input id="search_button" type="submit" class="btn btn-primary" value="Search">
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <div class="container">
 

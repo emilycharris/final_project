@@ -1,18 +1,46 @@
 {% extends "base.html" %}
+{% load bootstrap_pagination %}
+
 
 {% block content %}
 
-  <table>
-    <tr>
-      <th>Name</th>
-    </tr>
-    <tbody>
-      {% for object in object_list %}
-      <tr>
-        <td><a href="{% url 'program_detail_view' object.pk %}">{{object}}</a></td>
-      </tr>
-      {% endfor %}
+
+
+
+        {% for object in object_list %}
+
+        <ul>
+          <div class="media">
+            <div class="media-left">
+              <a href="{% url 'program_detail_view' object.pk %}">
+                <img class="media-object" src='{{object.thumbnail}}' alt="" width="177" height="100">
+              </a>
+            </div>
+            <div class="media-body">
+              <table class='table'>
+                <tr>
+                  <div class="media-body">
+                  <td><h3 class="media-heading" id='inline'>{{object.name}}</h3></td>
+                  <td>  <h4 class='media-heading' id='inline' style="float:right">{{object.rating}}</h4></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </ul>
+
+        {% endfor %}
+
 
     </tbody>
   </table>
+<div class="">
+
+</div>
+  {% bootstrap_paginate page_obj range=10 show_prev_next="false" show_first_last="true" %}
+
+
+
+
+
+
 {% endblock %}

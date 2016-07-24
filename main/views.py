@@ -28,6 +28,16 @@ class ProfileUpdateView(UpdateView):
 
 class ProgramListView(ListView):
     model = Program
+    paginate_by = 15
+
+    def get_queryset(self, **kwargs):
+        programs = Program.objects.all()
+        search = self.request.GET.get('search')
+        if search:
+            search_name = search.replace("+", " ").lower()
+            return Program.objects.filter(name__contains=search_name)
+        else:
+            return Program.objects.all()
 
 class ProgramDetailView(DetailView):
     model = Program
