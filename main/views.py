@@ -7,6 +7,8 @@ from django.conf.urls import url, include
 from main.models import Program, Profile, Queue, Rating, QueueProgram
 from extra_views import CreateWithInlinesView, UpdateWithInlinesView, InlineFormSet
 from extra_views.generic import GenericInlineFormSet
+from django.http import HttpResponseRedirect
+
 
 # Create your views here.
 
@@ -24,6 +26,10 @@ class ProfileUpdateView(UpdateView):
     success_url = reverse_lazy('profile_update_view')
 
     def get_object(self, queryset=None):
+        # try:
+        #     profile = self.request.user.profile
+        # except DoesNotExist:
+        #     profile = Profile(user=self.request.user)
         return self.request.user.profile
 
 class ProgramListView(ListView):
@@ -48,7 +54,7 @@ class ProgramDetailView(DetailView):
 
 class QueueProgramInline(InlineFormSet):
     model = QueueProgram
-    fields = ['program', 'network']
+    fields = ['network']
     extra = 1
 
 class QueueCreateView(CreateWithInlinesView):

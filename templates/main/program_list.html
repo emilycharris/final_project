@@ -26,17 +26,19 @@
               </table>
             </div>
           </div>
+<a type='button' class= 'btn btn-default' href="{% url 'queue_create_view' %}">Add to Queue</a>
         </ul>
-
-        {% endfor %}
+          {% endfor %}
 
 
     </tbody>
   </table>
-<div class="">
-
-</div>
+<div style="text-align: center">
   {% bootstrap_paginate page_obj range=10 show_prev_next="false" show_first_last="true" %}
+</div>
+
+{# https://github.com/jmcclell/django-bootstrap-pagination#}
+
 
 
 

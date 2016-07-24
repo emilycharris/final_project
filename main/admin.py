@@ -6,5 +6,18 @@ from main.models import Rating, Profile, Program, Queue, QueueProgram
 admin.site.register(Rating)
 admin.site.register(Profile)
 admin.site.register(Program)
-admin.site.register(Queue)
+
+class QueueProgramInline(admin.StackedInline):
+    model = QueueProgram
+
 admin.site.register(QueueProgram)
+
+
+class QueueAdmin(admin.ModelAdmin):
+    list_display = ['id', 'user']
+    inlines = (QueueProgramInline,)
+
+    def get_inline_instances(self, request, obj=None):
+        return [inline(self.model, self.admin_site) for inline in self.inlines]
+
+admin.site.register(Queue, QueueAdmin)

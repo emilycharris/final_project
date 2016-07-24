@@ -2,3 +2,19 @@
   height: 32px;
   width: 32px;
 }
+
+.logo_header {
+    display: block;
+    float: left;
+}
+
+/*original = 264 x 88*/
+
+.logo_body {
+  display: block;
+  width: 40%;
+  margin: auto;
+
+}
+/*ratio = 6.27*/
+/*logo = canva.com, grey real estate, roboto font*/

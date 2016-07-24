@@ -61,7 +61,7 @@ class Program(models.Model):
 
 
 class Queue(models.Model):
-    user = models.OneToOneField('auth.User')
+    user = models.ForeignKey('auth.User')
 
     def __str__(self):
         return str(self.user)
@@ -69,7 +69,7 @@ class Queue(models.Model):
 class QueueProgram(models.Model):  #thru table between queue and program
     queue = models.ForeignKey(Queue)
     program = models.ForeignKey(Program)
-    network = models.CharField(max_length=100)
+    network = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):
         return str(self.program)
