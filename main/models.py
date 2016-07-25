@@ -68,7 +68,7 @@ class Queue(models.Model):
 
 class QueueProgram(models.Model):  #thru table between queue and program
     queue = models.ForeignKey(Queue)
-    program = models.OneToOneField(Program)
+    program = models.ForeignKey(Program)
     network = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self):
@@ -82,3 +82,4 @@ def create_user_profile(**kwargs):
     instance = kwargs.get("instance")
     if created:
         Profile.objects.create(user=instance)
+        Queue.objects.create(user=instance)

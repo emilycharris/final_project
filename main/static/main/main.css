@@ -14,7 +14,11 @@
   display: block;
   width: 40%;
   margin: auto;
-
 }
 /*ratio = 6.27*/
 /*logo = canva.com, grey real estate, roboto font*/
+
+footer{
+  background-color: red;
+  padding: 20px 25px;
+}
