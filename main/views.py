@@ -68,46 +68,20 @@ class QueueProgramInline(InlineFormSet):
 class QueueUpdateView(UpdateWithInlinesView):
     model = Queue
     inlines = [QueueProgramInline]
-    fields = ['']
+    fields = []
     success_url = reverse_lazy("index_view") # <<- change
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        pk = self.kwargs.get('pk')
-        context['queue'] = Queue.objects.get(id=pk)
-        programs = QueueProgram.objects.filter(id=pk)
-
-    # def get_object(self, queryset=None):
-    #     queue = Queue.objects.get(id=self.kwargs['queue_pk'])
-    #     program = Program.objects.get(id=self.kwargs['program_pk'])
-        # add_queue = QueueProgram.objects.create(queue=queue, program=program)
-        # return queue
-        # return program
-
-    # def get_queryset(self, **kwargs):
-    #     queue = Queue.objects.get(queueprogram=self.kwargs.get('pk'))
-    #     return queue
-
-    # def get(self, request, *args, **kwargs):
-    #     queue = self.kwargs.get('queue_pk')
-    #     # program = self.kwargs.get('program_pk')
-    #     return Queue.objects.get(id=queue)
-
-    def form_valid(self, form, **kwargs):
+    def forms_valid(self, form, inlines, **kwargs):
         form = form.save(commit=False)
-        form.queue = self.request.user.queue.id
-        form.program = self.kwargs.get('pk')
-        print(form.queue)
+        form.user = self.request.user
         form.save()
         print(form)
-        # for formset in inlines:
-        #     for inline_form in formset:
-        #         program = self.kwargs.get('program_pk')
-        #         unsaved_form = inline_form.save(commit=False)
-        #         unsaved_form.program = Program.objects.get(id=program)
-        #         print(unsaved_form.program)
-        #         unsaved_form.queue = form
-        #         unsaved_form.save()
-        return super().forms_valid(form) # <<- change
+        for formset in inlines:
+            for inline_form in formset:
+                unsaved_form = inline_form.save(commit=False)
+                unsaved_form.program = Program.objects.get(id=self.kwargs.get('program_pk'))
+                unsaved_form.queue = Queue.objects.get(id=self.kwargs.get('pk'))
+                unsaved_form.save()
+        return super().forms_valid(form, inlines) # <<- change
 
 #django-extra-views https://github.com/AndrewIngram/django-extra-views/
