@@ -29,6 +29,6 @@ urlpatterns = [
     url(r'^accounts/profile/$', login_required(ProfileUpdateView.as_view()), name="profile_update_view"),
     url(r'^program_list/$', ProgramListView.as_view(), name='program_list_view'),
     url(r'^program_detail/(?P<pk>\d+)/$', ProgramDetailView.as_view(), name='program_detail_view'),
-    url(r'^queue_create/$', login_required(QueueCreateView.as_view()), name='queue_create_view'),
+    url(r'^queue_create/(?P<pk>\d+)/$', login_required(QueueCreateView.as_view()), name='queue_create_view'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

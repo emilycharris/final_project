@@ -63,13 +63,17 @@ class QueueCreateView(CreateWithInlinesView):
     fields = []
     success_url = reverse_lazy("index_view") # <<- change
 
-    def forms_valid(self, form, inlines):
+    def forms_valid(self, form, inlines, **kwargs):
         form = form.save(commit=False)
         form.user = self.request.user
         form.save()
         for formset in inlines:
-            print(formset.instance)
-            formset.save()
+            for inline_form in formset:
+                program_id = self.kwargs.get('pk')
+                unsaved_form = inline_form.save(commit=False)
+                unsaved_form.program = Program.objects.get(id=program_id)
+                unsaved_form.queue = form
+                unsaved_form.save()
         return HttpResponseRedirect(reverse_lazy('index_view')) # <<- change
 
 #django-extra-views https://github.com/AndrewIngram/django-extra-views/

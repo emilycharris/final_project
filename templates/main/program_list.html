@@ -26,7 +26,7 @@
               </table>
             </div>
           </div>
-<a type='button' class= 'btn btn-default' href="{% url 'queue_create_view' %}">Add to Queue</a>
+<a type='button' class= 'btn btn-default' href="{% url 'queue_create_view' object.pk %}">Add to Queue</a>
         </ul>
           {% endfor %}
 
