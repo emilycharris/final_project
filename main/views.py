@@ -61,22 +61,17 @@ class ProgramDetailView(DetailView):
 
 
 class QueueCreateView(CreateView):
-    model = Queue
-    inlines = [QueueProgramInline]
-    fields = []
-    success_url = reverse_lazy("index_view") # <<- change
+    model = QueueProgram
+    fields = ['network']
+    success_url = reverse_lazy('program_list_view')
 
-    def forms_valid(self, form, inlines, **kwargs):
+
+    def form_valid(self, form, **kwargs):
         form = form.save(commit=False)
-        form.user = self.request.user
+        queue = self.kwargs.get('pk')
+        program = self.kwargs.get('program_pk')
+        form.queue = Queue.objects.get(id=queue)
+        form.program = Program.objects.get(id=program)
         form.save()
-        print(form)
-        for formset in inlines:
-            for inline_form in formset:
-                unsaved_form = inline_form.save(commit=False)
-                unsaved_form.program = Program.objects.get(id=self.kwargs.get('program_pk'))
-                unsaved_form.queue = Queue.objects.get(id=self.kwargs.get('pk'))
-                unsaved_form.save()
-        return super().forms_valid(form, inlines) # <<- change
-
-#django-extra-views https://github.com/AndrewIngram/django-extra-views/
+        print(form, form.queue, form.program)
+        return HttpResponseRedirect(reverse_lazy('index_view')) # <<- change
