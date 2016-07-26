@@ -59,13 +59,8 @@ class ProgramDetailView(DetailView):
         program_id = self.kwargs.get('pk')
         return Program.objects.filter(id=program_id)
 
-class QueueProgramInline(InlineFormSet):
-    model = QueueProgram
-    fields = ['network']
-    extra = 1
 
-
-class QueueUpdateView(UpdateWithInlinesView):
+class QueueCreateView(CreateView):
     model = Queue
     inlines = [QueueProgramInline]
     fields = []
