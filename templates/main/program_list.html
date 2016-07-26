@@ -21,14 +21,12 @@
                 <tr>
                   <div class="media-body">
                   <td><h3 class="media-heading" id='inline'>{{object.name}}</h3></td>
-                  <td>  <h4 class='media-heading' id='inline' style="float:right">{{object.rating}}</h4></td>
+                  <td>  <h4 class='media-heading pull-right' id='inline' >{{object.rating}}</h4></td>
+                  <td><a type='button' id='inline' class= 'media-heading btn btn-danger pull-right' href="{% url 'queue_create_view' user.queue.id object.pk %}">Add to Queue</a></td>
                 </tr>
               </table>
             </div>
           </div>
-<a type='button' class= 'btn btn-default pull-right' href="{% url 'queue_create_view' user.queue.id object.pk %}">Add to Queue</a>
-{{object.pk}}
-{{user.queue.id}}
 
 
         </ul>

@@ -63,7 +63,6 @@ class ProgramDetailView(DetailView):
 class QueueCreateView(CreateView):
     model = QueueProgram
     fields = ['network']
-    success_url = reverse_lazy('program_list_view')
 
 
     def form_valid(self, form, **kwargs):
@@ -74,4 +73,10 @@ class QueueCreateView(CreateView):
         form.program = Program.objects.get(id=program)
         form.save()
         print(form, form.queue, form.program)
-        return HttpResponseRedirect(reverse_lazy('index_view')) # <<- change
+        return HttpResponseRedirect(reverse_lazy('queue_list_view')) # <<- change
+
+class QueueListView(ListView):
+    model = QueueProgram
+
+    def get_queryset(self):
+        return QueueProgram.objects.filter(queue=self.request.user.queue.id)
