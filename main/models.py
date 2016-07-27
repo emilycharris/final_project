@@ -29,7 +29,7 @@ class Profile(models.Model):
 
 
 class Program(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=500)
     guidebox_id = models.IntegerField()
     rating = models.ForeignKey(Rating)
     runtime = models.IntegerField()
