@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.conf.urls import url, include
 from main.models import Program, Profile, Queue, Rating, QueueProgram, GroupQueue
 from django.http import HttpResponseRedirect
+import random
 
 
 # Create your views here.
@@ -20,7 +21,7 @@ class CreateUserView(CreateView):
 
 class ProfileUpdateView(UpdateView):
     model = Profile
-    fields = ['parent', 'rating_limit', 'email']
+    fields = ['display_name','parent', 'rating_limit', 'email']
     success_url = reverse_lazy('profile_update_view')
 
     def get_object(self, queryset=None):
@@ -79,7 +80,11 @@ class GroupQueueTemplateView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         group = GroupQueue.objects.filter(user=self.request.user).last()
-        print(dir(group))
-        context['program_list'] = group.get_random_program()
+        program_list, rating_limit = list(group.get_random_program())
+        upper_range = len(program_list)-1
+        index_value = random.randint(0,upper_range)
+        print(index_value)
+        print(rating_limit)
+        context['rating_limit'] = rating_limit
+        context['random_program'] = program_list[index_value]
         return context
-        #return group.user.all()

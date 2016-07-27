@@ -23,9 +23,16 @@ class Profile(models.Model):
     parent=models.ForeignKey('self', null=True, blank=True, related_name='child')
     rating_limit = models.ForeignKey(Rating, null=True, blank=True)
     email = models.EmailField(blank=True, null=True)
+    photo = models.ImageField(upload_to='profile_photos', null=True, blank=True, max_length=500)
 
     def __str__(self):
         return str(self.user)
+
+    @property
+    def photo_url(self):
+        if self.photo:
+            return self.photo.url
+        return "http://www.clker.com/cliparts/f/Z/G/4/h/Q/no-image-available-md.png"
 
 
 class Program(models.Model):
@@ -70,7 +77,7 @@ class Queue(models.Model):
 
 class QueueProgram(models.Model):  #thru table between queue and program
     queue = models.ForeignKey(Queue)
-    program = models.OneToOneField(Program)
+    program = models.ForeignKey(Program)
     network = models.CharField(max_length=100, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -83,12 +90,24 @@ class QueueProgram(models.Model):  #thru table between queue and program
 class GroupQueue(models.Model):
     user = models.ManyToManyField(User)
 
+
     def get_random_program(self):
+        rating_limit_list = []
+        for user in self.user.all():
+            if user.profile.rating_limit:
+                print(user.profile.rating_limit.id, user.profile.rating_limit)
+                rating_limit_list.append(user.profile.rating_limit.id)
+                rating_limit_list.sort()
+        rating_limit = rating_limit_list[0]
+        rating_limit_name = Rating.objects.get(id=rating_limit)
+        print(rating_limit_name)
+
         program_list = []
         for user in self.user.all():
             for program in user.queue.queueprogram_set.all():
-                program_list.append(program)
-        return program_list
+                if program.program.rating.id <= rating_limit:
+                    program_list.append(program)
+        return (program_list, rating_limit_name)
 
 @receiver(post_save, sender='auth.User')
 def create_user_profile(**kwargs):

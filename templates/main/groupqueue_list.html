@@ -2,6 +2,15 @@
 
 {% block content %}
 
-  {{ program_list }}
+
+<h4><em>Based on your queues, we randomly selected:</em></h4>
+<br>
+<img src="{{random_program.program.banner}}" alt="" enctype=multipart/form-data/>
+<br>
+<h1>{{random_program}} {% if random_program.network %}({{random_program.network}}){% endif %}{{random_program.program.rating}}</h1>
+<br>
+<h6><em>(Parents, these shows have less than a {{rating_limit}} rating)</em></h6>
+
+
 
 {% endblock %}

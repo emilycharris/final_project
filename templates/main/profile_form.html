@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% load bootstrap %}
 {% block content %}
-{% if profile.user.parent == None and profile.user.email == None %}
+{% if profile.parent == None and profile.email == None %}
 <form class="" action="" method="post">
   {% csrf_token %}
+  {% if profile.parent  %}{% endif %}
 
   {{form|bootstrap}}
 
