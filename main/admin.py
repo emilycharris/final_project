@@ -1,5 +1,5 @@
 from django.contrib import admin
-from main.models import Rating, Profile, Program, Queue, QueueProgram
+from main.models import Rating, Profile, Program, Queue, QueueProgram, GroupQueue
 
 # Register your models here.
 
@@ -21,3 +21,9 @@ class QueueAdmin(admin.ModelAdmin):
         return [inline(self.model, self.admin_site) for inline in self.inlines]
 
 admin.site.register(Queue, QueueAdmin)
+
+class GroupQueueAdmin(admin.ModelAdmin):
+        list_display = ['id']
+
+
+admin.site.register(GroupQueue, GroupQueueAdmin)

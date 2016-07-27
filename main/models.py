@@ -19,6 +19,7 @@ class Rating(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField('auth.User')
+    display_name = models.CharField(max_length=100, null=True, blank=True)
     parent=models.ForeignKey('self', null=True, blank=True, related_name='child')
     rating_limit = models.ForeignKey(Rating, null=True, blank=True)
     email = models.EmailField(blank=True, null=True)
@@ -73,10 +74,22 @@ class QueueProgram(models.Model):  #thru table between queue and program
     network = models.CharField(max_length=100, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-created']
+
     def __str__(self):
         return str(self.program)
 
+class GroupQueue(models.Model):
+    user = models.ManyToManyField(User)
 
+    @property
+    def get_random_program(self, group):
+        program_list = []
+        for user in group:
+            for program in user.queue.queueprogram_set.all():
+                program_list.append(program)
+        return program_list
 
 @receiver(post_save, sender='auth.User')
 def create_user_profile(**kwargs):

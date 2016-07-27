@@ -4,9 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse_lazy
 from django.conf.urls import url, include
-from main.models import Program, Profile, Queue, Rating, QueueProgram
-from extra_views import CreateWithInlinesView, UpdateWithInlinesView, InlineFormSet
-from extra_views.generic import GenericInlineFormSet
+from main.models import Program, Profile, Queue, Rating, QueueProgram, GroupQueue
 from django.http import HttpResponseRedirect
 
 
@@ -26,10 +24,6 @@ class ProfileUpdateView(UpdateView):
     success_url = reverse_lazy('profile_update_view')
 
     def get_object(self, queryset=None):
-        # try:
-        #     profile = self.request.user.profile
-        # except DoesNotExist:
-        #     profile = Profile(user=self.request.user)
         return self.request.user.profile
 
 class ProgramListView(ListView):
@@ -46,12 +40,6 @@ class ProgramListView(ListView):
         else:
             return Program.objects.all()
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     queue_pk = self.kwargs.get('queue_pk')
-    #     context['queue'] = Queue.objects.get(id=queue_pk)
-    #     return context
-
 class ProgramDetailView(DetailView):
     model = Program
 
@@ -59,11 +47,9 @@ class ProgramDetailView(DetailView):
         program_id = self.kwargs.get('pk')
         return Program.objects.filter(id=program_id)
 
-
 class QueueCreateView(CreateView):
     model = QueueProgram
     fields = ['network']
-
 
     def form_valid(self, form, **kwargs):
         form = form.save(commit=False)
@@ -80,3 +66,20 @@ class QueueListView(ListView):
 
     def get_queryset(self):
         return QueueProgram.objects.filter(queue=self.request.user.queue.id)
+
+class GroupQueueCreateView(CreateView):
+    model = GroupQueue
+    fields = ['user']
+    success_url = reverse_lazy('group_queue_list_view')
+
+class GroupQueueListView(TemplateView):
+    model = GroupQueue
+    template_name = 'main/groupqueue_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        group = GroupQueue.objects.filter(user=self.request.user).last()
+        print(dir(group))
+        context['program_list'] = group.get_random_program
+        return context
+        #return group.user.all()

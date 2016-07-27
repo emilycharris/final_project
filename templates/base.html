@@ -22,7 +22,12 @@
           </button>
 
           {% if user.is_authenticated %}
-          <a class="navbar-brand" href="{% url 'index_view' %}"></a>
+          <a class="navbar-brand" href="{% url 'index_view' %}">whatshouldwewatch.online</a>
+          <a class="navbar-brand" href="{% url 'profile_update_view' %}">Profile</a>
+          <a class="navbar-brand" href="{% url 'queue_list_view' %}">Queue</a>
+          <a class="navbar-brand" href="{% url 'program_list_view' %}">Program List</a>
+          <a class="navbar-brand" href="{% url 'group_queue_create_view' %}">Who's Watching?</a>
+
 
 
           {% else %}
