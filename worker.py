@@ -106,6 +106,7 @@ def add_program(apps, schema_editor):
                                                                        'consumerism', 'substance'))
         for row in data:
             print(row['rating'])
+            print(Rating.objects.all())
             rating = Rating.objects.get(rating=row['rating'])
             print(row['guidebox_id'])
             Program.objects.create(name=row['name'],
