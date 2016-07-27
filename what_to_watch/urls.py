@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from main.views import IndexView, CreateUserView, ProfileUpdateView, ProgramListView, ProgramDetailView, QueueCreateView, QueueListView, GroupQueueCreateView, GroupQueueListView
+from main.views import IndexView, CreateUserView, ProfileUpdateView, ProgramListView, ProgramDetailView, QueueCreateView, QueueListView, GroupQueueCreateView, GroupQueueTemplateView
 from django.contrib.auth.decorators import login_required
 from django.conf.urls.static import static
 from django.conf import settings
@@ -32,5 +32,5 @@ urlpatterns = [
     url(r'^queue_create/(?P<pk>\d+)/(?P<program_pk>\d+)/$', login_required(QueueCreateView.as_view()), name='queue_create_view'),
     url(r'^queue_list_view', login_required(QueueListView.as_view()), name='queue_list_view'),
     url(r'^group_queue_create', login_required(GroupQueueCreateView.as_view()), name='group_queue_create_view'),
-    url(r'^group_queue_list', login_required(GroupQueueListView.as_view()), name='group_queue_list_view'),
+    url(r'^group_queue_template', login_required(GroupQueueTemplateView.as_view()), name='group_queue_template_view'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

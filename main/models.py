@@ -83,10 +83,9 @@ class QueueProgram(models.Model):  #thru table between queue and program
 class GroupQueue(models.Model):
     user = models.ManyToManyField(User)
 
-    @property
-    def get_random_program(self, group):
+    def get_random_program(self):
         program_list = []
-        for user in group:
+        for user in self.user.all():
             for program in user.queue.queueprogram_set.all():
                 program_list.append(program)
         return program_list

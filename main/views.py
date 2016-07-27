@@ -70,9 +70,9 @@ class QueueListView(ListView):
 class GroupQueueCreateView(CreateView):
     model = GroupQueue
     fields = ['user']
-    success_url = reverse_lazy('group_queue_list_view')
+    success_url = reverse_lazy('group_queue_template_view')
 
-class GroupQueueListView(TemplateView):
+class GroupQueueTemplateView(TemplateView):
     model = GroupQueue
     template_name = 'main/groupqueue_list.html'
 
@@ -80,6 +80,6 @@ class GroupQueueListView(TemplateView):
         context = super().get_context_data(**kwargs)
         group = GroupQueue.objects.filter(user=self.request.user).last()
         print(dir(group))
-        context['program_list'] = group.get_random_program
+        context['program_list'] = group.get_random_program()
         return context
         #return group.user.all()
