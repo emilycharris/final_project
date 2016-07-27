@@ -105,6 +105,7 @@ def add_program(apps, schema_editor):
                                                                        'positive_role_model', 'violence', 'sex', 'language',
                                                                        'consumerism', 'substance'))
         for row in data:
+            print(row['rating'])
             rating = Rating.objects.get(rating=row['rating'])
             print(row['guidebox_id'])
             Program.objects.create(name=row['name'],
@@ -128,7 +129,8 @@ def add_ratings(apps, schema_editor):
     with open('ratings.csv') as infile:
         data = csv.DictReader(infile, delimiter="|", fieldnames=('rating', 'description', 'detail'))
         for row in data:
-
+            print(row['rating'])
             Rating.objects.create(rating=row['rating'],
                                  description=row['description'],
                                  detail=row['detail'])
+        print("CREATED RATINGS!")
