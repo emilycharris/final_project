@@ -7,6 +7,8 @@ from django.conf.urls import url, include
 from main.models import Program, Profile, Queue, Rating, QueueProgram, GroupQueue
 from django.http import HttpResponseRedirect
 import random
+from django.core.paginator import Paginator
+
 
 
 # Create your views here.
@@ -29,7 +31,7 @@ class ProfileUpdateView(UpdateView):
 
 class ProgramListView(ListView):
     model = Program
-    paginate_by = 15
+    paginate_by = 16
 
     def get_queryset(self, **kwargs):
         programs = Program.objects.all()
@@ -64,9 +66,17 @@ class QueueCreateView(CreateView):
 
 class QueueListView(ListView):
     model = QueueProgram
+    paginate_by = 16
 
-    def get_queryset(self):
-        return QueueProgram.objects.filter(queue=self.request.user.queue.id)
+    def get_queryset(self, **kwargs):
+        programs = QueueProgram.objects.all()
+        queue = self.request.user.queue.id
+        search = self.request.GET.get('search')
+        if search:
+            search_name = search.replace("+", " ").lower()
+            return QueueProgram.objects.filter(queue=self.request.user.queue.id).filter(program__contains=search_name)
+        else:
+            return QueueProgram.objects.filter(queue=self.request.user.queue.id)
 
 class GroupQueueCreateView(CreateView):
     model = GroupQueue

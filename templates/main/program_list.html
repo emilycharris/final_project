@@ -5,46 +5,63 @@
 {% block content %}
 
 
+    <!--/slider-100-->
 
+    <div class="container">
 
-        {% for object in object_list %}
+      <table>
+        <tbody>
+          <tr>
+            <td class="span6"><h2>Program List</h2></td>
+            <td class='span6'><h2><label for="search_box" class="control-label"></label>
+                       <form action="{% url 'program_list_view' %}" method="get">
+                           <div class="input-group">
+                               <input id="search_box" type="text" class="form-control" name="search" placeholder='Search Program Title'>
+                               <span class="input-group-btn">
+                                   <input id="search_button" type="submit" class="btn btn-primary" value="Search">
+                               </span>
+                           </div>
+                       </form></h2></td>
+          </tr>
+        </tbody>
+      </table>
+      {# <div class="row">#}
+        {# <div class="span12">#}
+            {# <ul id="portfolio-filter" class="sortOptions">#}
+              {# <li>Filter by </li>#}
+              {# <li><a href="">show all</a></li>#}
+              {# <li><a href="">Design</a></li>#}
+              {# <li><a href="">Print</a></li>#}
+              {# <li><a href="">Most creative</a></li>#}
+            {# </ul>#}
+          {# </div>#}
+      {# </div>#}
 
-        <ul>
-          <div class="media">
-            <div class="media-left">
-              <a href="{% url 'program_detail_view' object.pk %}">
-                <img class="media-object" src='{{object.thumbnail}}' alt="" width="177" height="100">
-              </a>
-            </div>
-            <div class="media-body">
-              <table class='table'>
-                <tr>
-                  <div class="media-body">
-                  <td><h3 class="media-heading" id='inline'>{{object.name}}</h3></td>
-                  <td>  <h4 class='media-heading pull-right' id='inline' >{{object.rating}}</h4></td>
-                  <td><a type='button' id='inline' class= 'media-heading btn btn-danger pull-right' href="{% url 'queue_create_view' user.queue.id object.pk %}">Add to Queue</a></td>
-                </tr>
-              </table>
-            </div>
+      <div class="row gallery clearfix" id="portfolio-list">
+
+          {% for object in object_list %}
+          <div class="span3 features">
+            <div class="portfolio">
+                  {# <a href="images/img/proj2.jpg" rel="prettyPhoto[gallery2]" title="Big View">#}
+                      {# <span class="preview"><i class="icon-lightbulb"></i></span>#}
+                  {# </a>#}
+                  <img src={{object.thumbnail}} alt="" >
+                  <h3><a href={% url 'program_detail_view' object.pk %}>{{object.name}}</a></h3>
+                  <span>{{object.rating}} <a class="btn btn-inverse pull-right" type="button" href="{% url 'queue_create_view' user.queue.id object.pk %}"><i class=" icon-plus"></i></a></span>
+              </div>
           </div>
-
-
-        </ul>
           {% endfor %}
 
+{% bootstrap_paginate page_obj range=10 show_prev_next="false" show_first_last="true" %}
 
-    </tbody>
-  </table>
-<div style="text-align: center">
-  {% bootstrap_paginate page_obj range=10 show_prev_next="false" show_first_last="true" %}
-</div>
 
-{# https://github.com/jmcclell/django-bootstrap-pagination#}
+    </div>
 
 
 
 
 
 
+    {% endblock %}
 
-{% endblock %}
+      </div>

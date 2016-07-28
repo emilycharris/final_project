@@ -1,17 +1,20 @@
 {% extends "base.html" %}
 {% load bootstrap %}
 {% block content %}
+<div class="container">
+  <form class="" action="" method="post">
+    {% csrf_token %}
+  <h4>Select those who will be watching:</h4>
+    {{form|bootstrap}}
+  Hold down "Control", or "Command" on a Mac, to select more than one.
+    <br>
+    <br>
+    <button type="submit" class="btn btn-danger">Submit Group</button>
 
-<form class="" action="" method="post">
-  {% csrf_token %}
-<h4>Select those who will be watching:</h4>
-  {{form|bootstrap}}
-Hold down "Control", or "Command" on a Mac, to select more than one.
-  <br>
-  <br>
-  <button type="submit" class="btn btn-danger">Submit Group</button>
+  </form>
+  <br><br>
+</div>
 
-</form>
-<br><br>
+
 
 {% endblock %}

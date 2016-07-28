@@ -1,24 +1,17 @@
-.thumbnail {
-  height: 32px;
-  width: 32px;
+
+
+#imaginary_container{
+    margin-top:20%; /* Don't copy this */
 }
-
-.logo_header {
-    display: block;
-    float: left;
+.stylish-input-group .input-group-addon{
+    background: white !important;
 }
-
-/*original = 264 x 88*/
-
-.logo_body {
-  display: block;
-  width: 40%;
-  margin: auto;
+.stylish-input-group .form-control{
+	border-right:0;
+	box-shadow:0 0 0;
+	border-color:#ccc;
 }
-/*ratio = 6.27*/
-/*logo = canva.com, grey real estate, roboto font*/
-
-footer{
-  background-color: #5271FF;
-  padding: 20px 25px;
+.stylish-input-group button{
+    border:0;
+    background:transparent;
 }

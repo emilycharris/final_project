@@ -1,15 +1,39 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% block content %}
-{% if request.user.is_authenticated %}
+{% if user.is_authenticated %}
 
-
-
-
-{% else %}
+<div class="slider-100">
+    <!-- CAROUSEL
+    ============================= -->
+    <div class="container">
+        <div class="row">
+            <div class="span12 relative">
+                <div id="myCarousel" class="carousel slide carousel-app">
+                    <!-- Carousel items -->
+                    <div class="carousel-inner">
+                        <div class="active item">
+                            <div class="right-data-app">
+                                <img src="{% static 'main/theme_color_4/images/img/slider-app-1.png' %}" alt="" >
+                            </div>
+                            <div class="left-data-app">
+                                <h3>family tv, <span class="black"><em>simplified</em></span></h3>
+                                {# <span class="desc">Multi-Person Programming Selections</span>#}
 <br>
-<br>
+                                <p>It's hard for families to agree upon television choices.  We have an abundance of programming at our fingertips like never before, but when we sit down with the family, we have to decide who gets to pick the show and what's appropriate content for everyone sitting at the television.</p>
+                                <p>We exist to simplify family time.  Using our application, each of your family members can program a queue and, based upon who's watching, can generate a randomly selected program to watch that's appropriate for everyone included.</p>
+                                <p>No more arguments. At least not about this.</p>
 
-<h1 class=""><em>Welcome!</em></h1><h4 class=""><em>Please sign in or register using links above</em></h4>
+                                <a class="btn btn-large btn-inverse" href="sign_up.html">Start a Family Account</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--/slider-100-->
+
 {% endif %}
-
 {% endblock %}

@@ -1,15 +1,105 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container">
+
+  <div class="container">
+
+    <h1>Based on your queues, we think you should watch:</h1>
 
 
-<h4><em>Based on your queues, we randomly selected:</em></h4>
-<br>
-<img src="{{random_program.program.banner}}" alt="" enctype=multipart/form-data/>
-<br>
-<h1>{{random_program}} {% if random_program.network %}({{random_program.network}}){% endif %}{{random_program.program.rating}}</h1>
-<br>
-<h6><em>(Parents, these shows have less than a {{rating_limit}} rating)</em></h6>
+      <div class="row">
+
+        <div class="span9">
+            <div class="wrap blog">
+                <img class="main-img" src="{{random_program.program.thumbnail}}" alt="" enctype=multipart/form-data>
+                  {# <img class="icon-picture" width=84px src="{{random_program.program.thumbnail}}" alt="" enctype=multipart/form-data>#}
+                  <h3>{{random_program.program.name}}</h3>
+                  {% if network %}
+                  <span class="data"><h5>{{random_program.program.network}}   &nbsp;&nbsp;&nbsp;   {{random_program.program.rating}}   &nbsp;&nbsp;&nbsp;   {{random_program.program.queueprogram}}</h5></span>
+                  {% else %}
+                  <span class="data">{{random_program.program.rating}}   &nbsp;&nbsp;&nbsp;   {{random_program.program.queue}}</span><br/>
+
+                  {% endif %}
+                  <p>
+                    {{random_program.program.overview}}
+                  </p>
+              </div>
+
+
+
+          </div>
+
+
+          {# <aside class="span3" display='none'>#}
+
+              <!-- Text widget -->
+              {# <div class="wrap">#}
+                  {# <h3>Text Widget</h3>#}
+                  {# <p>#}
+                      {# Donec seid odio dui. Nullalit libero, alea pharetra augue. Nullam id dolor ideacto vehicula SockMonkee lorem dolor. Donec seid odio dui. Nullalit libero, alea pharetra augue. Nullam id dolor ideacto vehicula SockMonkee lorem dolor.#}
+                  {# </p>#}
+              {# </div>#}
+
+
+              <!-- Categories widget -->
+              {# <div class="wrap">#}
+                  {# <h3>Categories</h3>#}
+                  {# <ul class="unstyled">#}
+                      {# <li><a href="#"><i class="icon-minus"></i> Wordpress</a></li>#}
+                      {# <li><a href="#"><i class="icon-minus"></i> Blogs</a></li>#}
+                      {# <li><a href="#"><i class="icon-minus"></i> Html Templates</a></li>#}
+                      {# <li><a href="#"><i class="icon-minus"></i> Faqs</a></li>#}
+                      {# <li><a href="#"><i class="icon-minus"></i> Design</a></li>#}
+                      {# <li><a href="#"><i class="icon-minus"></i> Brands</a></li>#}
+                  {# </ul>#}
+              {# </div>#}
+
+
+              <!-- Tags widget -->
+              {# <div class="wrap">#}
+                  {# <h3>Tags</h3>#}
+                  {# <ul class="tags">#}
+                      {# <li><a href="#">Wordpress</a></li>#}
+                      {# <li><a href="#">Blogs</a></li>#}
+                      {# <li><a href="#">Html Templates</a></li>#}
+                      {# <li><a href="#">Faqs</a></li>#}
+                      {# <li><a href="#">Design</a></li>#}
+                      {# <li><a href="#">Brands</a></li>#}
+                      {# <li><a href="#">Wordpress</a></li>#}
+                      {# <li><a href="#">Blogs</a></li>#}
+                      {# <li><a href="#">Html Templates</a></li>#}
+                      {# <li><a href="#">Faqs</a></li>#}
+                      {# <li><a href="#">Design</a></li>#}
+                      {# <li><a href="#">Brands</a></li>#}
+                  {# </ul>#}
+              {# </div>#}
+
+
+              <!-- video widget -->
+              {# <div class="wrap">#}
+                {# <h3>Video widget</h3>#}
+                  {# <div class="video-container main-img">#}
+                      {# <iframe src="http://player.vimeo.com/video/51230259?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> <p><a href="http://vimeo.com/51230259">CATZILLA</a> from <a href="http://vimeo.com/platigeimage">Platige Image</a> on <a href="http://vimeo.com">Vimeo</a>.</p>#}
+                  {# </div>#}
+              {# </div>#}
+
+          {# </aside>#}
+
+      </div>
+
+  </div><!--/container-->
+
+
+
+
+
+
+  <h4><em>(Parents, these shows are all {{rating_limit}} or less)</em></h4>
+</div>
+
+
+
 
 
 

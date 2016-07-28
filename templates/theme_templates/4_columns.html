@@ -1,0 +1,153 @@
+{% extends "base2.html" %}
+{% load bootstrap_pagination %}
+
+
+
+{% block content %}
+
+<body>
+
+
+    <!--/slider-100-->
+    {% for object in object_list %}
+
+    <ul>
+      <div class="media">
+        <div class="media-left">
+          <a href="{% url 'program_detail_view' object.pk %}">
+            <img class="media-object" src='{{object.thumbnail}}' alt="" width="177" height="100">
+          </a>
+        </div>
+        <div class="media-body">
+          <table class='table'>
+            <tr>
+              <div class="media-body">
+              <td><h3 class="media-heading" id='inline'>{{object.name}}</h3></td>
+              <td>  <h4 class='media-heading pull-right' id='inline' >{{object.rating}}</h4></td>
+              <td><a type='button' id='inline' class= 'media-heading btn btn-danger pull-right' href="{% url 'queue_create_view' user.queue.id object.pk %}">Add to Queue</a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+
+    </ul>
+      {% endfor %}
+
+
+
+
+      
+
+    <div class="container">
+
+    	<h1>Program List</h1>
+
+        <div class="row">
+        	<div class="span12">
+              <ul id="portfolio-filter" class="sortOptions">
+                <li>Sort by </li>
+                <li><a href="#all">show all</a></li>
+                <li><a href="#design">Design</a></li>
+                <li><a href="#features">Print</a></li>
+                <li><a href="#examples">Most creative</a></li>
+              </ul>
+            </div>
+        </div>
+
+        <div class="row gallery clearfix" id="portfolio-list">
+
+        	<div class="span3 design">
+            	<div class="portfolio">
+                    <a href="images/img/proj1.jpg" rel="prettyPhoto[gallery2]" title="Big View">
+                        <span class="preview"><i class="icon-lightbulb"></i></span>
+                    </a>
+                    <img src="images/img/proj1.jpg" alt="" >
+                    <h3><a href="single_project.html">Project Name</a></h3>
+                    <span>Illustrator, Graphic, Design</span>
+                </div>
+            </div>
+
+            <div class="span3 features">
+            	<div class="portfolio">
+                    <a href="images/img/proj2.jpg" rel="prettyPhoto[gallery2]" title="Big View">
+                        <span class="preview"><i class="icon-lightbulb"></i></span>
+                    </a>
+                    <img src="images/img/proj2.jpg" alt="" >
+                    <h3><a href="single_project.html">Project Name</a></h3>
+                    <span>Illustrator, Graphic, Design</span>
+                </div>
+            </div>
+
+            <div class="span3 examples">
+            	<div class="portfolio">
+                    <a href="images/img/proj4.jpg" rel="prettyPhoto[gallery2]" title="Big View">
+                        <span class="preview"><i class="icon-lightbulb"></i></span>
+                    </a>
+                    <img src="images/img/proj4.jpg" alt="" >
+                    <h3><a href="single_project.html">Project Name</a></h3>
+                    <span>Illustrator, Graphic, Design</span>
+                </div>
+            </div>
+
+            <div class="span3 features">
+            	<div class="portfolio">
+                    <a href="images/img/proj3.jpg" rel="prettyPhoto[gallery2]" title="Big View">
+                        <span class="preview"><i class="icon-lightbulb"></i></span>
+                    </a>
+                    <img src="images/img/proj3.jpg" alt="" >
+                    <h3><a href="single_project.html">Project Name</a></h3>
+                    <span>Illustrator, Graphic, Design</span>
+                </div>
+            </div>
+
+            <div class="span3 examples">
+            	<div class="portfolio">
+                    <a href="images/img/proj5.jpg" rel="prettyPhoto[gallery2]" title="Big View">
+                        <span class="preview"><i class="icon-lightbulb"></i></span>
+                    </a>
+                    <img src="images/img/proj5.jpg" alt="" >
+                    <h3><a href="single_project.html">Project Name</a></h3>
+                    <span>Illustrator, Graphic, Design</span>
+                </div>
+            </div>
+
+            <div class="span3 design">
+            	<div class="portfolio">
+                    <a href="images/img/proj6.jpg" rel="prettyPhoto[gallery2]" title="Big View">
+                        <span class="preview"><i class="icon-lightbulb"></i></span>
+                    </a>
+                    <img src="images/img/proj6.jpg" alt="" >
+                    <h3><a href="single_project.html">Project Name</a></h3>
+                    <span>Illustrator, Graphic, Design</span>
+                </div>
+            </div>
+
+            <div class="span3 design">
+            	<div class="portfolio">
+                    <a href="images/img/proj7.jpg" rel="prettyPhoto[gallery2]" title="Big View">
+                        <span class="preview"><i class="icon-lightbulb"></i></span>
+                    </a>
+                    <img src="images/img/proj7.jpg" alt="" >
+                    <h3><a href="single_project.html">Project Name</a></h3>
+                    <span>Illustrator, Graphic, Design</span>
+                </div>
+            </div>
+
+            <div class="span3 examples">
+            	<div class="portfolio">
+                    <a href="images/img/proj8.jpg" rel="prettyPhoto[gallery2]" title="Big View">
+                        <span class="preview"><i class="icon-lightbulb"></i></span>
+                    </a>
+                    <img src="images/img/proj8.jpg" alt="" >
+                    <h3><a href="single_project.html">Project Name</a></h3>
+                    <span>Illustrator, Graphic, Design</span>
+                </div>
+            </div>
+        </div><!--/row-->
+
+    </div><!--/container-->
+
+</body>
+{% endblock %}
+</html>

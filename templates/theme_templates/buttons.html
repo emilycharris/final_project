@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en">
+<!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <title>CORDIC | Bootstrap Theme</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- fav and touch icons 
+    ======================================================================================-->
+    <link rel="shortcut icon" href="images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-touch-icon-114x114.png">
+  
+	<!-- Start CSS Style 
+    =======================================================================================-->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+    <!-- Main Style -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css" />
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome-ie7.min.css">
+    <![endif]-->
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <link href="css/ie.css" rel="stylesheet" />
+    <![endif]-->
+    
+</head>
+
+
+<body>
+	
+    <header>
+    	<div class="container">
+            <div class="row">
+                <div class="span4">
+                    <img class="logo" src="images/logo.png" alt="Cordic logo" >
+                </div>
+                <!-- MENU
+                ============================= -->
+                <div class="span8">
+                    <nav class="nav-top">
+                        <ul class="nav nav-pills top-menu">
+                            <!--Home-->
+                            <li class="dropdown">
+                                <img class="menu-top" src="images/menu-top.png" alt="" >
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Home <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="index.html">Home Application</a></li>
+                                    <li><a href="index_portfolio.html">Home Portfolio</a></li>
+                                    <li><a href="index_corporate.html">Home Corporate</a></li>
+                                    <li><a href="index_general.html">Home General</a></li>
+                                </ul>
+                            </li>
+                            <!--Pages-->
+                            <li class="dropdown">
+                                <img class="menu-top" src="images/menu-top.png" alt="" >
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pages <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="about_us.html">About Us</a></li>
+                                    <li><a href="services.html">Services</a></li>
+                                    <li><a href="our_team.html">Our Team</a></li>
+                                    <li><a href="sitemap.html">Sitemap</a></li>
+                                    <li><a href="404_error.html">404 error</a></li>
+                                    <li><a href="faqs.html">FAQs</a></li>
+                                    <li><a href="right_sidebar.html">Right Sidebar</a></li>
+                                    <li><a href="left_sidebar.html">Left Sidebar</a></li>
+                                    <li><a href="pricing_tables.html">Pricing Tables</a></li>
+                                    <li><a href="login.html">Login</a></li>
+                                    <li><a href="sign_up.html">Sign Up</a></li>
+                                </ul>
+                            </li>
+                            <!--Features-->
+                            <li class="dropdown active">
+                                <img class="menu-top" src="images/menu-top.png" alt="" >
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Features <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="icons.html">Icons</a></li>
+                                    <li><a href="buttons.html">Buttons</a></li>
+                                    <li><a href="elements.html">Elements</a></li>
+                                    <li class="dropdown-submenu"><a tabindex="-1" href="#">Theme Colors</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="../theme_color_1/index.html">Theme Color 1</a></li>
+                                            <li><a href="../theme_color_2/index.html">Theme Color 2</a></li>
+                                            <li><a href="../theme_color_3/index.html">Theme Color 3</a></li>
+                                            <li><a href="../theme_color_4/index.html">Theme Color 4</a></li>
+                                            <li><a href="../theme_color_5/index.html">Theme Color 5</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--Portfolio-->
+                            <li class="dropdown">
+                                <img class="menu-top" src="images/menu-top.png" alt="" >
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Portfolio <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="2_columns.html">2 Columns</a></li>
+                                    <li><a href="3_columns.html">3 Columns</a></li>
+                                    <li><a href="4_columns.html">4 Columns</a></li>
+                                    <li><a href="single_project.html">Single Project</a></li>
+                                </ul>
+                            </li>
+                            <!--Blog-->
+                            <li class="dropdown">
+                                <img class="menu-top" src="images/menu-top.png" alt="" >
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Blog <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="blog_list.html">Blog List</a></li>
+                                    <li><a href="blog_details.html">Blog Details</a></li>
+                                </ul>
+                            </li>
+                            <!--Contact Us-->
+                            <li class="single">
+                                <img class="menu-top" src="images/menu-top.png" alt="" >
+                                <a href="contact_us.html">Contact Us</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="menuDevices">
+                      <div class="select_outer">
+                          <select onchange="location=this.value">
+                                <option value="#">MENU</option>
+                                <option value="index.html">Home Application</option>
+                                <option value="index_corporate.html">Home Corporate</option>
+                                <option value="index_general.html">Home General</option>
+                                <option value="about_us.html">About Us</option>
+                                <option value="services.html">Services</option>
+                                <option value="our_team.html">Our Team</option>
+                                <option value="sitemap.html">Sitemap</option>
+                                <option value="404_error.html">404</option>
+                                <option value="faqs.html">FAQs</option>
+                                <option value="right_sidebar.html">Right Sidebar</option>
+                                <option value="left_sidebar.html">Left Sidebar</option>
+                                <option value="pricing_tables.html">Pricing Tables</option>
+                                <option value="login.html">Login</option>
+                                <option value="sign_up.html">Sign Up</option>
+                                <option value="icons.html">Icons</option>
+                                <option value="buttons.html">Buttons</option>
+                                <option value="elements.html">Elements</option>
+                                <option value="../theme_color_1/index.html">Theme Color 1</option>
+                                <option value="../theme_color_2/index.html">Theme Color 2</option>
+                                <option value="../theme_color_3/index.html">Theme Color 3</option>
+                                <option value="../theme_color_4/index.html">Theme Color 4</option>
+                                <option value="../theme_color_5/index.html">Theme Color 5</option>
+                                <option value="2_columns.html">2 Columns Portfolio</option>
+                                <option value="3_columns.html">3 Columns Portfolio</option>
+                                <option value="4_columns.html">4 Columns Portfolio</option>
+                                <option value="single_project.html">Single Project</option>
+                                <option value="blog_list.html">Blog List</option>
+                                <option value="blog_details.html">Blog Details</option>
+                                <option value="contact_us.html">Contact Us</option>
+                          </select>
+                      </div><!--/select_outer-->
+                    </div>
+                </div>
+            </div><!--/row-->
+        </div>
+    </header>
+    
+    <!--/slider-100-->
+    
+    
+    <div class="container">    
+    
+    	<h1>Buttons</h1>
+        
+        <section id="buttons">
+
+          <h2>Default buttons</h2>
+          <p>Button styles can be applied to anything with the <code>.btn</code> class applied. However, typically you'll want to apply these to only <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements for the best rendering.</p>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Button</th>
+                <th>class=""</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><button type="button" class="btn">Default</button></td>
+                <td><code>btn</code></td>
+                <td>Standard gray button with gradient</td>
+              </tr>
+              <tr>
+                <td><button type="button" class="btn btn-primary">Primary</button></td>
+                <td><code>btn btn-primary</code></td>
+                <td>Provides extra visual weight and identifies the primary action in a set of buttons</td>
+              </tr>
+              <tr>
+                <td><button type="button" class="btn btn-info">Info</button></td>
+                <td><code>btn btn-info</code></td>
+                <td>Used as an alternative to the default styles</td>
+              </tr>
+              <tr>
+                <td><button type="button" class="btn btn-success">Success</button></td>
+                <td><code>btn btn-success</code></td>
+                <td>Indicates a successful or positive action</td>
+              </tr>
+              <tr>
+                <td><button type="button" class="btn btn-warning">Warning</button></td>
+                <td><code>btn btn-warning</code></td>
+                <td>Indicates caution should be taken with this action</td>
+              </tr>
+              <tr>
+                <td><button type="button" class="btn btn-danger">Danger</button></td>
+                <td><code>btn btn-danger</code></td>
+                <td>Indicates a dangerous or potentially negative action</td>
+              </tr>
+              <tr>
+                <td><button type="button" class="btn btn-inverse">Inverse</button></td>
+                <td><code>btn btn-inverse</code></td>
+                <td>Alternate dark gray button, not tied to a semantic action or use</td>
+              </tr>
+              <tr>
+                <td><button type="button" class="btn btn-link">Link</button></td>
+                <td><code>btn btn-link</code></td>
+                <td>Deemphasize a button by making it look like a link while maintaining button behavior</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>Cross browser compatibility</h4>
+          <p>IE9 doesn't crop background gradients on rounded corners, so we remove it. Related, IE9 jankifies disabled <code>button</code> elements, rendering text gray with a nasty text-shadow that we cannot fix.</p>
+
+
+          <h2>Button sizes</h2>
+          <p>Fancy larger or smaller buttons? Add <code>.btn-large</code>, <code>.btn-small</code>, or <code>.btn-mini</code> for additional sizes.</p>
+          <div class="bs-docs-example">
+            <p>
+              <button type="button" class="btn btn-large btn-primary">Large button</button>
+              <button type="button" class="btn btn-large">Large button</button>
+            </p>
+            <p>
+              <button type="button" class="btn btn-primary">Default button</button>
+              <button type="button" class="btn">Default button</button>
+            </p>
+            <p>
+              <button type="button" class="btn btn-small btn-primary">Small button</button>
+              <button type="button" class="btn btn-small">Small button</button>
+            </p>
+            <p>
+              <button type="button" class="btn btn-mini btn-primary">Mini button</button>
+              <button type="button" class="btn btn-mini">Mini button</button>
+            </p>
+          </div>
+<pre class="prettyprint linenums">
+&lt;p&gt;
+  &lt;button class="btn btn-large btn-primary" type="button"&gt;Large button&lt;/button&gt;
+  &lt;button class="btn btn-large" type="button"&gt;Large button&lt;/button&gt;
+&lt;/p&gt;
+&lt;p&gt;
+  &lt;button class="btn btn-primary" type="button"&gt;Default button&lt;/button&gt;
+  &lt;button class="btn" type="button"&gt;Default button&lt;/button&gt;
+&lt;/p&gt;
+&lt;p&gt;
+  &lt;button class="btn btn-small btn-primary" type="button"&gt;Small button&lt;/button&gt;
+  &lt;button class="btn btn-small" type="button"&gt;Small button&lt;/button&gt;
+&lt;/p&gt;
+&lt;p&gt;
+  &lt;button class="btn btn-mini btn-primary" type="button"&gt;Mini button&lt;/button&gt;
+  &lt;button class="btn btn-mini" type="button"&gt;Mini button&lt;/button&gt;
+&lt;/p&gt;
+</pre>
+          <p>Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>.btn-block</code>.</p>
+          <div class="bs-docs-example">
+            <div class="well" style="max-width: 400px; margin: 0 auto 10px;">
+              <button type="button" class="btn btn-large btn-block btn-primary">Block level button</button>
+              <button type="button" class="btn btn-large btn-block">Block level button</button>
+            </div>
+          </div>
+<pre class="prettyprint linenums">
+&lt;button class="btn btn-large btn-block btn-primary" type="button"&gt;Block level button&lt;/button&gt;
+&lt;button class="btn btn-large btn-block" type="button"&gt;Block level button&lt;/button&gt;
+</pre>
+
+
+          <h2>Disabled state</h2>
+          <p>Make buttons look unclickable by fading them back 50%.</p>
+
+          <h3>Anchor element</h3>
+          <p>Add the <code>.disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
+          <p class="bs-docs-example">
+            <a href="#" class="btn btn-large btn-primary disabled">Primary link</a>
+            <a href="#" class="btn btn-large disabled">Link</a>
+          </p>
+<pre class="prettyprint linenums">
+&lt;a href="#" class="btn btn-large btn-primary disabled"&gt;Primary link&lt;/a&gt;
+&lt;a href="#" class="btn btn-large disabled"&gt;Link&lt;/a&gt;
+</pre>
+          <p>
+            <span class="label label-info">Heads up!</span>
+            We use <code>.disabled</code> as a utility class here, similar to the common <code>.active</code> class, so no prefix is required. Also, this class is only for aesthetic; you must use custom JavaScript to disable links here.
+          </p>
+
+          <h3>Button element</h3>
+          <p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
+          <p class="bs-docs-example">
+            <button type="button" class="btn btn-large btn-primary disabled" disabled="disabled">Primary button</button>
+            <button type="button" class="btn btn-large" disabled>Button</button>
+          </p>
+<pre class="prettyprint linenums">
+&lt;button type="button" class="btn btn-large btn-primary disabled" disabled="disabled"&gt;Primary button&lt;/button&gt;
+&lt;button type="button" class="btn btn-large" disabled&gt;Button&lt;/button&gt;
+</pre>
+
+
+          <h2>One class, multiple tags</h2>
+          <p>Use the <code>.btn</code> class on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element.</p>
+          <form class="bs-docs-example">
+            <a class="btn" href="">Link</a>
+            <button class="btn" type="submit">Button</button>
+            <input class="btn" type="button" value="Input">
+            <input class="btn" type="submit" value="Submit">
+          </form>
+<pre class="prettyprint linenums">
+&lt;a class="btn" href=""&gt;Link&lt;/a&gt;
+&lt;button class="btn" type="submit"&gt;Button&lt;/button&gt;
+&lt;input class="btn" type="button" value="Input"&gt;
+&lt;input class="btn" type="submit" value="Submit"&gt;
+</pre>
+          <p>As a best practice, try to match the element for your context to ensure matching cross-browser rendering. If you have an <code>input</code>, use an <code>&lt;input type="submit"&gt;</code> for your button.</p>
+
+        </section>
+        
+    </div><!--/container-->
+    
+    
+    <footer>
+    	<div class="container">
+            <div class="row">
+                <!-- Links
+                ============================= -->
+                <div class="span4">
+                    <div class="top-part">
+                        <ul class="footer-links">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about_us.html">About us</a></li>
+                            <li><a href="blog_list.html">Blog</a></li>
+                            <li><a href="sitemap.html">Sitemap</a></li>
+                            <li><a href="contact_us.html">Contact us</a></li>
+                        </ul>
+                    </div>
+                    <div class="socials">
+                    	<span>Stay Connected</span>
+                        <a href="#"><i class="icon-facebook-sign"></i></a>
+                        <a href="#"><i class="icon-twitter-sign"></i></a>
+                        <a href="#"><i class="icon-google-plus-sign"></i></a>
+                        <a href="#"><i class="icon-linkedin-sign"></i></a>
+                        <a href="#"><i class="icon-github-sign"></i></a>
+                    </div>
+                </div>
+                <!-- TWITTER
+                ============================= -->
+                <div class="span4">
+                	<div class="top-part">Twitter Feed</div>
+                	<div class="tweet"></div>
+                </div>
+                <!-- FLICKR
+                ============================= -->
+                <div class="span4">
+                	<div class="top-part">Flickr Feed</div>
+                	<ul class="basicuse thumbs"></ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bottom-area">
+        	<div class="container">
+            	<div class="row">
+                	<div class="span6">
+                    	Copyright © 2013 Cordic. All rights reserved.
+                    </div>
+                    <div class="span6 text-right">
+                    	Socialize with us on Twitter, Facebook, Dribbble or Rss
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+	
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/mosaic.1.0.1.js"></script><!--hover effect-->
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.carouFredSel-6.1.0-packed.js"></script><!--horizontal slider-->
+    <script src="js/jquery.tweet.js"></script><!-- Twitter plugin -->
+    <script src="js/jflickrfeed.min.js"></script><!-- jQuery Flickr -->
+    <script src="js/jquery.masonry.min.js"></script><!-- jQuery Pinterest -->
+    <script src="js/jquery.ui.totop.js"></script><!-- TOTOP -->
+    <script src="js/custom.js"></script>
+        
+</body>
+</html>
