@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+  <div class="container">
+    <h3>Are you sure you want to delete {{object.program}} from your queue?</h3>
+    <form class="form-horizontal" action="" method="post">
+      {% csrf_token %}
+              <div class="control-group">
+                    {{form}}
+              </div>
+              <div class="control-group">
+                  <div class="controls">
+                  <input type="submit" class="btn btn-large btn-danger" name='submit' value="Yes, delete"></button>
+                  <br>
+                  <br>
+                  <a href="{% url 'queue_list_view' %}" >No, take me back to my queue</a>
+
+                  </div>
+              </div>
+          </form>
+
+  </div>
+{% endblock %}

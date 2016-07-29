@@ -90,6 +90,8 @@ class QueueProgram(models.Model):  #thru table between queue and program
 class GroupQueue(models.Model):
     user = models.ManyToManyField(User)
 
+    
+
 
     def get_random_program(self):
         rating_limit_list = []

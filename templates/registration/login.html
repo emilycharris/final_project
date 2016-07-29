@@ -1,9 +1,39 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
-{% block content %}
-  <form class="" action="" method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" name="submit" value="Login">
-  </form>
-{% endblock %}
+    {% block content %}
+    <div class="container">
+
+      <h1>Login</h1>
+
+      <form class="form-horizontal" action="" method="post">
+        {% csrf_token %}
+
+                <div class="control-group">
+                  <label class="control-label">Username</label>
+                    <div class="controls">
+                      {{form.username}}
+                    </div>
+                </div>
+
+                <div class="control-group">
+                  <label class="control-label">Password</label>
+                    <div class="controls">
+                      {{form.password}}
+                    </div>
+                </div>
+
+
+                <div class="control-group">
+                    <div class="controls">
+                    {# <label class="checkbox">#}
+                    {# <input type="checkbox"> Remember me#}
+                    {# </label><br/>#}
+                    <button type="submit" class="btn">Sign in</button>
+                    </div>
+                </div>
+
+            </form>
+
+    </div><!--/container-->
+    {% endblock %}

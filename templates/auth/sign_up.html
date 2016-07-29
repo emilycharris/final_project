@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container">
+
+  <h1>Sign Up</h1>
+  <form class="form-horizontal" action="" method="post">
+    {% csrf_token %}
+            <div class="control-group">
+                <label class="control-label" for="inputUsername">Username</label>
+                <div class="controls">
+                  {{form.username}}
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputPassword">Password</label>
+                <div class="controls">
+                  {{form.password1}}
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputPassword">Confirm Password</label>
+                <div class="controls">
+                  {{form.password2}}
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="controls">
+                {# <label class="checkbox">#}
+                {# <input type="checkbox"> Remember me#}
+                {# </label><br/>#}
+                <input type="submit" class="btn" name='submit' value="Create Account"></button>
+                </div>
+            </div>
+            <em>By signing up for this account, I acknowledge that I will be the approving entity for all accounts for which I create.  I agree to receive emails from familyTV.online solely for the purpose of approving programming outside the rating limits I establish.</em>
+        </form>
+
+</div><!--/container-->
+
+{% endblock %}

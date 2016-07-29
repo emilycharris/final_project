@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
-{% if user.is_authenticated %}
 
 <div class="slider-100">
     <!-- CAROUSEL
@@ -18,13 +17,14 @@
                             </div>
                             <div class="left-data-app">
                                 <h3>family tv, <span class="black"><em>simplified</em></span></h3>
-                                {# <span class="desc">Multi-Person Programming Selections</span>#}
 <br>
-                                <p>It's hard for families to agree upon television choices.  We have an abundance of programming at our fingertips like never before, but when we sit down with the family, we have to decide who gets to pick the show and what's appropriate content for everyone sitting at the television.</p>
+                                <p>It's hard for families to agree on what to watch together.  We have an abundance of programming at our fingertips, but when we sit down with the family, we have to decide who gets to pick the show and what's appropriate content for everyone sitting at the television.</p>
                                 <p>We exist to simplify family time.  Using our application, each of your family members can program a queue and, based upon who's watching, can generate a randomly selected program to watch that's appropriate for everyone included.</p>
                                 <p>No more arguments. At least not about this.</p>
 
-                                <a class="btn btn-large btn-inverse" href="sign_up.html">Start a Family Account</a>
+                                <a class="btn btn btn-inverse" href="{% url 'create_parent_view' %}">Start a Family Account</a>
+                                <a class ='btn btn btn-inverse' href="{% url 'login' %}">Sign In to Existing Account</a>
+
                             </div>
                         </div>
 
@@ -35,5 +35,4 @@
     </div>
 </div><!--/slider-100-->
 
-{% endif %}
 {% endblock %}

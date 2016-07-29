@@ -8,6 +8,8 @@ from main.models import Program, Profile, Queue, Rating, QueueProgram, GroupQueu
 from django.http import HttpResponseRedirect
 import random
 from django.core.paginator import Paginator
+from django.contrib.auth.models import User
+
 
 
 
@@ -16,15 +18,16 @@ from django.core.paginator import Paginator
 class IndexView(TemplateView):
     template_name = 'index.html'
 
-class CreateUserView(CreateView):
+class CreateParentView(CreateView):
     model = User
     form_class = UserCreationForm
+    template_name = 'auth/sign_up.html'
     success_url = "/login"
 
 class ProfileUpdateView(UpdateView):
     model = Profile
     fields = ['display_name','parent', 'rating_limit', 'email']
-    success_url = reverse_lazy('profile_update_view')
+    success_url = reverse_lazy('queue_list_view')
 
     def get_object(self, queryset=None):
         return self.request.user.profile
@@ -78,10 +81,28 @@ class QueueListView(ListView):
         else:
             return QueueProgram.objects.filter(queue=self.request.user.queue.id)
 
+class QueueProgramDeleteView(DeleteView):
+    model = QueueProgram
+    success_url = reverse_lazy('queue_list_view')
+
 class GroupQueueCreateView(CreateView):
     model = GroupQueue
     fields = ['user']
     success_url = reverse_lazy('group_queue_template_view')
+
+    def get_queryset(self):
+        users = User.objects.all()
+        user_list = []
+        for user in self.users.all():
+            if self.request.user.parent == None:
+                parent = self.request.user
+            else:
+                parent = self.request.user.parent
+                child = self.request.user
+            user_list.append(parent)
+            user_list.append(child)
+            print(user_list)
+            return user_list
 
 class GroupQueueTemplateView(TemplateView):
     model = GroupQueue

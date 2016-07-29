@@ -11,7 +11,7 @@
 
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
-    <title>FamilyTV</title>
+    <title>FamilyTV.online</title>
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,7 +51,8 @@
     	<div class="container">
             <div class="row">
                 <div class="span4">
-                    <img class="logo" src="{% static 'main/theme_color_4/images/emily logo.png' %}" alt="Cordic logo" >
+                    <a href="{% url 'index_view' %}"><img class="logo" src="{% static 'main/theme_color_4/images/emily logo.png' %}" alt=""></a>
+
                 </div>
                 <!-- MENU
                 ============================= -->
@@ -90,20 +91,9 @@
                             <!--Logoout-->
                             <li class="single" data-original-title>
                                 <img class="menu-top" src="{% static 'main/theme_color_4/images/menu-top.png' %}" alt="" >
-                                <a href="{% url 'logout' %}?next={% url 'index_view' %}">Logout</a>
+                                <a href="{% url 'logout' %}?next={% url 'index_view' %}">Logout as {{user}}</a>
 
                             </li>
-
-                            {% else %}
-
-                            <!--Login-->
-                            <li class="">
-                              <form class="" method="POST", action="{% url 'django.contrib.auth.views.login' %}">{% csrf_token %}
-                                <input type="text" class="form-control" name='username' placeholder="Username">
-                                <input type="password" class="form-control" name='password' placeholder="Password">
-                                <button type="submit" class="btn btn-primary">Login</button>
-                            </li>
-                              <li><a href="{% url 'create_user_view' %}">Register Parent Account</a></li>
 
                             {% endif %}
                         </ul>

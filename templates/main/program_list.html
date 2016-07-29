@@ -47,6 +47,7 @@
                   {# </a>#}
                   <img src={{object.thumbnail}} alt="" >
                   <h3><a href={% url 'program_detail_view' object.pk %}>{{object.name}}</a></h3>
+                  {% if object in self.request.user.queue.queueprogram %}!{% endif %}
                   <span>{{object.rating}} <a class="btn btn-inverse pull-right" type="button" href="{% url 'queue_create_view' user.queue.id object.pk %}"><i class=" icon-plus"></i></a></span>
               </div>
           </div>

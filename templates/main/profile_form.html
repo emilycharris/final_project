@@ -1,20 +1,37 @@
 {% extends "base.html" %}
-{% load bootstrap %}
 {% block content %}
-{% if profile.parent == None and profile.email == None %}
-<form class="" action="" method="post">
-  {% csrf_token %}
-  {% if profile.parent  %}{% endif %}
 
-  {{form|bootstrap}}
+<div class="container">
+  <h1>Update Profile</h1>
 
-  <br>
-  <br>
-  <button type="submit" class="btn btn-danger">Submit Profile</button>
+  <form class="form-horizontal" action="" method="post">
+    {% csrf_token %}
+    <br>
+            <div class="control-group">
+                <label class="control-label" for="display_name">Display Name:</label>
+                <div class="controls">
+                  {{form.display_name}}
+                </div>
+            </div>
+    <div class="control-group">
+        <label class="control-label" for="display_name">Email:</label>
+        <div class="controls">
+          {{form.email}}
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+        {# <label class="checkbox">#}
+        {# <input type="checkbox"> Remember me#}
+        {# </label><br/>#}
+        <button type="submit" class="btn">Submit Profile</button>
+        </div>
+    </div>
 
-</form>
-<br><br>
+  </form>
+  <br><br>
 
-{% endif %}
+</div>
+
 
 {% endblock %}
