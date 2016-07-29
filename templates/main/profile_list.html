@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="container">
+
+  <h1>My Family</h1>
+
+    <div class="row">
+      {% for object in object_list %}
+
+      <div class="span3 wrap">
+          <img src="images/img/members/1.jpg" alt="" >
+            <h4>{{object.display_name}}</h4>
+            <span class="job">{{object.user.username}}</span>
+            <ul class="socials-member">
+              <li class="first-title">Edit Profile</li>
+                <li><a href="{% url 'profile_update_view' object.pk %}"><i class="icon-edit"></i></a></li>
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'create_child_view' %}">Add Family Members</a>
+</div>
+{% endblock %}

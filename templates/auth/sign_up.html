@@ -4,7 +4,8 @@
 {% block content %}
 <div class="container">
 
-  <h1>Sign Up</h1>
+  {% if request.user == None %}
+  <h1>Create a Parent Account</h1>
   <form class="form-horizontal" action="" method="post">
     {% csrf_token %}
             <div class="control-group">
@@ -38,6 +39,56 @@
             </div>
             <em>By signing up for this account, I acknowledge that I will be the approving entity for all accounts for which I create.  I agree to receive emails from familyTV.online solely for the purpose of approving programming outside the rating limits I establish.</em>
         </form>
+        {% else %}
+          {% if user.profile.display_name %}
+          <h1>Create a Family Account under {{user.profile.display_name}}</h1>
+          {% else %}
+          <h1>Create a Family Account under {{user}}</h1>
+          {% endif %}
+          <form class="form-horizontal" action="" method="post">
+            {% csrf_token %}
+                    <div class="control-group">
+                        <label class="control-label" for="inputUsername">Username</label>
+                        <div class="controls">
+                          {{form.username}}
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="inputPassword">Password</label>
+                        <div class="controls">
+                          {{form.password1}}
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="inputPassword">Confirm Password</label>
+                        <div class="controls">
+                          {{form.password2}}
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="controls">
+                        {# <label class="checkbox">#}
+                        {# <input type="checkbox"> Remember me#}
+                        {# </label><br/>#}
+                        <input type="submit" class="btn" name='submit' value="Create Family Member Account"></button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                    {% if form.errors %}
+                       {% for field in form %}
+                          {% for error in field.errors %}
+                              {{ error }}
+                          {% endfor %}
+                       {% endfor %}
+                    {% endif %}
+                    </div>
+                </form>
+
+        {% endif %}
 
 </div><!--/container-->
 

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from main.views import IndexView, CreateParentView, ProfileUpdateView, ProgramListView, ProgramDetailView, QueueCreateView, QueueListView, GroupQueueCreateView, GroupQueueTemplateView, QueueProgramDeleteView
+from main.views import IndexView, CreateParentView, ParentProfileUpdateView, ProgramListView, ProgramDetailView, QueueCreateView, QueueListView, GroupQueueCreateView, GroupQueueTemplateView, QueueProgramDeleteView, CreateChildView, ChildrenProfileListView
 from django.contrib.auth.decorators import login_required
 from django.conf.urls.static import static
 from django.conf import settings
@@ -25,8 +25,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url('^', include('django.contrib.auth.urls')),
     url(r'^$', IndexView.as_view(), name='index_view'),
-    # url(r'^create_user/$', CreateUserView.as_view(), name='create_user_view'),
-    url(r'^accounts/profile/$', login_required(ProfileUpdateView.as_view()), name="profile_update_view"),
+    url(r'^accounts/profile/$', login_required(ParentProfileUpdateView.as_view()), name="profile_update_view"),
     url(r'^program_list/$', ProgramListView.as_view(), name='program_list_view'),
     url(r'^program_detail/(?P<pk>\d+)/$', ProgramDetailView.as_view(), name='program_detail_view'),
     url(r'^queue_create/(?P<pk>\d+)/(?P<program_pk>\d+)/$', login_required(QueueCreateView.as_view()), name='queue_create_view'),
@@ -35,4 +34,6 @@ urlpatterns = [
     url(r'^group_queue_create/$', login_required(GroupQueueCreateView.as_view()), name='group_queue_create_view'),
     url(r'^group_queue/$', login_required(GroupQueueTemplateView.as_view()), name='group_queue_template_view'),
     url(r'^sign_up/$', CreateParentView.as_view(), name='create_parent_view'),
+    url(r'^sign_up_family/$', login_required(CreateChildView.as_view()), name='create_child_view'),
+    url(r'^children_profile_list/$', login_required(ChildrenProfileListView.as_view()), name='children_profile_list_view')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

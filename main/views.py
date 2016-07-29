@@ -24,13 +24,37 @@ class CreateParentView(CreateView):
     template_name = 'auth/sign_up.html'
     success_url = "/login"
 
-class ProfileUpdateView(UpdateView):
+class CreateChildView(CreateView):
+    model = User
+    form_class = UserCreationForm
+    template_name = 'auth/sign_up.html'
+    success_url = reverse_lazy('children_profile_list_view')
+
+
+class ParentProfileUpdateView(UpdateView):
     model = Profile
-    fields = ['display_name','parent', 'rating_limit', 'email']
+    fields = ['display_name', 'email']
     success_url = reverse_lazy('queue_list_view')
 
     def get_object(self, queryset=None):
         return self.request.user.profile
+
+
+class ChildProfileUpdateView(UpdateView):
+    model = Profile
+    fields = ['display_name', 'email']
+    success_url = reverse_lazy('queue_list_view')
+
+    def get_object(self, queryset=None):
+        return self.request.user.profile
+
+
+class ChildrenProfileListView(ListView):
+    model = Profile
+
+    def get_queryset(self):
+        children = Profile.objects.filter(parent=self.request.user.id)
+        return children
 
 class ProgramListView(ListView):
     model = Program
@@ -42,7 +66,11 @@ class ProgramListView(ListView):
         search = self.request.GET.get('search')
         if search:
             search_name = search.replace("+", " ").lower()
-            return Program.objects.filter(name__contains=search_name)
+            results = Program.objects.filter(name__contains=search_name)
+            from django.db import connection
+            print(results.query)
+            return results
+
         else:
             return Program.objects.all()
 
@@ -114,8 +142,6 @@ class GroupQueueTemplateView(TemplateView):
         program_list, rating_limit = list(group.get_random_program())
         upper_range = len(program_list)-1
         index_value = random.randint(0,upper_range)
-        print(index_value)
-        print(rating_limit)
         context['rating_limit'] = rating_limit
         context['random_program'] = program_list[index_value]
         return context

@@ -91,8 +91,11 @@
                             <!--Logoout-->
                             <li class="single" data-original-title>
                                 <img class="menu-top" src="{% static 'main/theme_color_4/images/menu-top.png' %}" alt="" >
+                                {% if request.user.profile.display_name %}
+                                <a href="{% url 'logout' %}?next={% url 'index_view' %}">Logout as {{user.profile.display_name}}</a>
+                                {% else %}
                                 <a href="{% url 'logout' %}?next={% url 'index_view' %}">Logout as {{user}}</a>
-
+                                {% endif %}
                             </li>
 
                             {% endif %}

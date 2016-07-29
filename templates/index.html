@@ -21,10 +21,11 @@
                                 <p>It's hard for families to agree on what to watch together.  We have an abundance of programming at our fingertips, but when we sit down with the family, we have to decide who gets to pick the show and what's appropriate content for everyone sitting at the television.</p>
                                 <p>We exist to simplify family time.  Using our application, each of your family members can program a queue and, based upon who's watching, can generate a randomly selected program to watch that's appropriate for everyone included.</p>
                                 <p>No more arguments. At least not about this.</p>
-
+                                {% if request.user.is_authenticated %}
+                                {% else %}
                                 <a class="btn btn btn-inverse" href="{% url 'create_parent_view' %}">Start a Family Account</a>
                                 <a class ='btn btn btn-inverse' href="{% url 'login' %}">Sign In to Existing Account</a>
-
+                                {% endif %}
                             </div>
                         </div>
 
