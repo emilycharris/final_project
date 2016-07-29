@@ -65,10 +65,8 @@ class ProgramListView(ListView):
         queue = self.request.user.queue.id
         search = self.request.GET.get('search')
         if search:
-            search_name = search.replace("+", " ").lower()
-            results = Program.objects.filter(name__contains=search_name)
-            from django.db import connection
-            print(results.query)
+            search_name = search.replace("+", " ")
+            results = Program.objects.filter(name__icontains=search_name)
             return results
 
         else:
