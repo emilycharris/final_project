@@ -90,18 +90,19 @@ class QueueProgram(models.Model):  #thru table between queue and program
 class GroupQueue(models.Model):
     user = models.ManyToManyField(User)
 
-    
-
-
     def get_random_program(self):
         rating_limit_list = []
         for user in self.user.all():
             if user.profile.rating_limit:
-                print(user.profile.rating_limit.id, user.profile.rating_limit)
                 rating_limit_list.append(user.profile.rating_limit.id)
                 rating_limit_list.sort()
-        rating_limit = rating_limit_list[0]
-        rating_limit_name = Rating.objects.get(id=rating_limit)
+        if rating_limit_list:
+            rating_limit = rating_limit_list[0]
+            rating_limit_name = Rating.objects.get(id=rating_limit)
+        else:
+            rating = Rating.objects.last()
+            rating_limit = rating.id
+            rating_limit_name = Rating.objects.last()
         print(rating_limit_name)
 
         program_list = []

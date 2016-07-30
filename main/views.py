@@ -10,9 +10,6 @@ import random
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 
-
-
-
 # Create your views here.
 
 class IndexView(TemplateView):
@@ -115,6 +112,27 @@ class GroupQueueCreateView(CreateView):
     model = GroupQueue
     fields = ['user']
     success_url = reverse_lazy('group_queue_template_view')
+'''
+    def get_form(self):
+        users = User.objects.all()
+        form = super().get_form()
+        user_list = []
+        for user in users:
+            if self.request.user.profile.parent == None:
+                parent = self.request.user
+                child = user.profile.filter(parent=self.request.user)
+            else:
+                parent = self.request.user.parent
+                child = self.request.user
+        if parent:
+            user_list.append(parent)
+        if child:
+            user_list.append(child)
+
+        print(user_list)
+        # Profiles that have a parent = self.request.user
+        # form.fields['user'].queryset = User.objects.filter(pk__in=self.request.user)
+        return form
 
     def get_queryset(self):
         users = User.objects.all()
@@ -129,7 +147,7 @@ class GroupQueueCreateView(CreateView):
             user_list.append(child)
             print(user_list)
             return user_list
-
+'''
 class GroupQueueTemplateView(TemplateView):
     model = GroupQueue
     template_name = 'main/groupqueue_list.html'

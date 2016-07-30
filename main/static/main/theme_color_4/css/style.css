@@ -2,7 +2,10 @@
 @import url("prettyphoto.css");   /* prettyphoto */
 @import url("mosaic.css");        /* mosaic */
 
-
+html {
+    position: relative;
+    min-height: 100%;
+}
 
 body {
 	font-family: 'AmbleLight', Arial, Helvetica, sans-serif;
@@ -111,7 +114,7 @@ header .container {
 	top: 0;
 }
 
-/* NAV 
+/* NAV
 ------------------------------------------------------*/
 .dropdown-toggle, li.single a {
 	color: #fff;
@@ -168,7 +171,7 @@ header .container {
 }
 
 header .dropdown-menu li + li > a {
-	border-top: 1px dotted #ccc; 
+	border-top: 1px dotted #ccc;
 }
 
 .nav-pills {
@@ -605,16 +608,16 @@ header .dropdown-menu {
 .sortOptions {
 	margin-bottom: 30px;
 	margin-left: 0;
-}                      
+}
 .sortOptions li {
 	display: inline;
 	margin-right: 10px;
-}                      
+}
 .sortOptions li a {
 	display: inline-block;
 	padding: 10px 20px;
-	background: #eee;	
-}                      
+	background: #eee;
+}
 ul#portfolio-filter a:hover, ul#portfolio-filter a.current{ background: #61a8f0; color: #fff; text-decoration: none }
 
 .proj-det {
@@ -879,6 +882,11 @@ footer {
 	background: #333;
 	margin-top: 40px;
 	color: #fff;
+	position: absolute;;
+	left: 0;
+	bottom: 0;
+	height: auto;
+	width: 100%;
 }
 
 footer .container {
@@ -917,7 +925,7 @@ footer .container {
 	padding: 20px 0;
 	padding-top: 0;
 	color: #ccc;
-}	
+}
 
 .socials span {
 	display: block;
@@ -1000,7 +1008,7 @@ transition: all .1s ease-out 0s;}
 
 
 
-/* GO TO TOP 
+/* GO TO TOP
 -------------------------------------------------------*/
 #toTop {
 	display:none;
@@ -1028,7 +1036,7 @@ transition: all .1s ease-out 0s;}
 
 
 
-/* BOX 
+/* BOX
 -------------------------------------------------------*/
 .box {
 	background: #eee;
@@ -1233,7 +1241,7 @@ h3.plan-name {
 }
 
 
-/* Our team 
+/* Our team
 ---------------------------------------*/
 .job {
 	font-size: 18px;
@@ -1312,20 +1320,20 @@ h3.plan-name {
 	padding-top: 30px;
 	height: 0;
 	overflow: hidden;
-}                      
-.video-container iframe,  
-.video-container object,  
+}
+.video-container iframe,
+.video-container object,
 .video-container embed {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-}                      
+}
 video {
 	max-width: 100%;
 	height: auto;
-}      
+}
 
 
 
@@ -1334,17 +1342,17 @@ video {
 .tags {
 	margin-left: 0;
 	list-style: none;
-}                      
+}
 .tags li {
 	float: left;
 	margin: 0 10px 15px 0;
-}                      
+}
 .tags li a {
 	background: #eee;
 	text-align: center;
 	padding: 5px 10px;
 	color: #787878;
-}                      
+}
 .tags li a:hover {
 	background: #61a8f0;
 	text-decoration: none;
@@ -1354,18 +1362,18 @@ video {
 	-ms-transition: all 0.3s ease-in;
 	-o-transition: all 0.3s ease-in;
 	transition: all 0.3s ease-in;
-}         
+}
 
 
-/* /// Dropcap /// 
+/* /// Dropcap ///
 --------------------------------------------*/
-.dropcap { 
-	float: left; 
-	color: #61a8f0; 
-	font-size: 40px; 
-	line-height: 40px; 
-	padding-right: 3px; 
-	padding-left: 3px; 
+.dropcap {
+	float: left;
+	color: #61a8f0;
+	font-size: 40px;
+	line-height: 40px;
+	padding-right: 3px;
+	padding-left: 3px;
 	margin-right: 8px;
 }
 .dropcapBg {
@@ -1487,8 +1495,9 @@ video {
 @media (max-width: 767px) {
 body {
 	padding: 0 !important;
+
 }
-.container { 
+.container {
 	padding: 10px;
 }
 
