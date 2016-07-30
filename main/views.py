@@ -32,7 +32,6 @@ class CreateChildView(CreateView):
         user=User.objects.last()
         return reverse_lazy('child_profile_update_view', kwargs = {'pk':user.id})
 
-
 class ParentProfileUpdateView(UpdateView):
     model = Profile
     fields = ['display_name', 'email', 'photo']
@@ -40,7 +39,6 @@ class ParentProfileUpdateView(UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user.profile
-
 
 class ChildProfileUpdateView(UpdateView):
     model = Profile
@@ -54,7 +52,6 @@ class ChildProfileUpdateView(UpdateView):
         form.parent = Profile.objects.get(user=parent)
         form.save()
         return HttpResponseRedirect(reverse_lazy('children_profile_list_view'))
-
 
 class ChildrenProfileListView(ListView):
     model = Profile
@@ -97,7 +94,6 @@ class QueueCreateView(CreateView):
         form.queue = Queue.objects.get(id=queue)
         form.program = Program.objects.get(id=program)
         form.save()
-        print(form, form.queue, form.program)
         return HttpResponseRedirect(reverse_lazy('queue_list_view')) # <<- change
 
 class QueueListView(ListView):
@@ -127,34 +123,17 @@ class GroupQueueCreateView(CreateView):
         form = super().get_form()
         users = User.objects.all()
         user_list = []
-        for user in users:
-            if self.request.user.profile.parent == None:
-                parent = self.request.user
-            else:
-                child = self.request.user
-                parent = self.request.user.profile.parent
-                user_list.append(child)
-        if parent:
-            user_list.append(parent)
+        if self.request.user.profile.parent == None:
+            parent = self.request.user.profile
+        else:
+            parent = self.request.user.profile.parent
+        user_list.append(parent.id)
+        children = Profile.objects.filter(parent=parent)
+        for child in children:
+            user_list.append(child.id)
         print(user_list)
-        # Profiles that have a parent = self.request.user
-        # form.fields['user'].queryset = User.objects.filter(pk__in=self.request.user)
+        form.fields['user'].queryset = User.objects.filter(pk__in=user_list)
         return form
-'''
-    def get_queryset(self):
-        users = User.objects.all()
-        user_list = []
-        for user in self.users.all():
-            if self.request.user.parent == None:
-                parent = self.request.user
-            else:
-                parent = self.request.user.parent
-                child = self.request.user
-            user_list.append(parent)
-            user_list.append(child)
-            print(user_list)
-            return user_list
-'''
 
 class GroupQueueTemplateView(TemplateView):
     model = GroupQueue

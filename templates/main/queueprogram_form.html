@@ -1,14 +1,23 @@
 {% extends "base.html" %}
 {% load bootstrap %}
 {% block content %}
+<div class="container">
+  <br><br>
+  <form class="form" action="" method="post">
+    <h4>You can optionally add the network on which you'd like to watch.</h4>
+    {% csrf_token %}
+            <div class="control-group">
+                  {{form}}
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                <input type="submit" class="btn btn-large btn-danger" name='submit' value="Add Network"></button>
+                </div>
+            </div>
+        </form>
+        <p><em>(Just leave it blank to continue.)</em></p>
 
-<form class="" action="" method="post">
-  {% csrf_token %}
-{{form}}
-     <div class="form-group">
-       <input type="submit" class="btn btn-danger" value="Add Program"></input>
-     </div>
- </form>
 
+</div>
 
 {% endblock %}

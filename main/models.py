@@ -103,7 +103,6 @@ class GroupQueue(models.Model):
             rating = Rating.objects.last()
             rating_limit = rating.id
             rating_limit_name = Rating.objects.last()
-        print(rating_limit_name)
 
         program_list = []
         for user in self.user.all():

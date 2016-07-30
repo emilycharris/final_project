@@ -9,7 +9,7 @@
       {% for object in object_list %}
 
       <div class="span3 wrap">
-          <img src="images/img/members/1.jpg" alt="" >
+          <img src={{object.photo_url}} height='250px' width='250px' alt="" >
             <h4>{{object.display_name}}</h4>
             <span class="job">{{object.user.username}}</span>
             <ul class="socials-member">
