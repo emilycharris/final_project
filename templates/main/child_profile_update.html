@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+  <h1>Update Family Account Profile</h1>
+
+  <form class="form-horizontal" action="" method="post">
+    {% csrf_token %}
+    <br>
+            <div class="control-group">
+                <label class="control-label" for="display_name">Display Name:</label>
+                <div class="controls">
+                  {{form.display_name}}
+                </div>
+            </div>
+    <div class="control-group">
+        <label class="control-label" for="display_name">Rating Limit:</label>
+        <div class="controls">
+          {{form.rating_limit}}
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="display_name">Profile Photo:</label>
+        <div class="controls">
+          {{form.photo}}
+        </div>
+    </div>
+
+
+    <div class="control-group">
+        <div class="controls">
+
+        <button type="submit" class="btn">Submit Profile</button>
+        </div>
+    </div>
+
+  </form>
+  <br><br>
+
+</div>
+
+
+{% endblock %}

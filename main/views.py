@@ -9,6 +9,8 @@ from django.http import HttpResponseRedirect
 import random
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
+from django.shortcuts import redirect
+
 
 # Create your views here.
 
@@ -25,13 +27,16 @@ class CreateChildView(CreateView):
     model = User
     form_class = UserCreationForm
     template_name = 'auth/sign_up.html'
-    success_url = reverse_lazy('children_profile_list_view')
+
+    def get_success_url(self, **kwargs):
+        user=User.objects.last()
+        return reverse_lazy('child_profile_update_view', kwargs = {'pk':user.id})
 
 
 class ParentProfileUpdateView(UpdateView):
     model = Profile
-    fields = ['display_name', 'email']
-    success_url = reverse_lazy('queue_list_view')
+    fields = ['display_name', 'email', 'photo']
+    success_url = reverse_lazy('children_profile_list_view')
 
     def get_object(self, queryset=None):
         return self.request.user.profile
@@ -39,11 +44,16 @@ class ParentProfileUpdateView(UpdateView):
 
 class ChildProfileUpdateView(UpdateView):
     model = Profile
-    fields = ['display_name', 'email']
+    fields = ['display_name', 'rating_limit', 'photo']
     success_url = reverse_lazy('queue_list_view')
+    template_name = 'main/child_profile_update.html'
 
-    def get_object(self, queryset=None):
-        return self.request.user.profile
+    def form_valid(self, form, **kwargs):
+        form = form.save(commit=False)
+        parent = self.request.user
+        form.parent = Profile.objects.get(user=parent)
+        form.save()
+        return HttpResponseRedirect(reverse_lazy('children_profile_list_view'))
 
 
 class ChildrenProfileListView(ListView):
@@ -112,28 +122,25 @@ class GroupQueueCreateView(CreateView):
     model = GroupQueue
     fields = ['user']
     success_url = reverse_lazy('group_queue_template_view')
-'''
+
     def get_form(self):
-        users = User.objects.all()
         form = super().get_form()
+        users = User.objects.all()
         user_list = []
         for user in users:
             if self.request.user.profile.parent == None:
                 parent = self.request.user
-                child = user.profile.filter(parent=self.request.user)
             else:
-                parent = self.request.user.parent
                 child = self.request.user
+                parent = self.request.user.profile.parent
+                user_list.append(child)
         if parent:
             user_list.append(parent)
-        if child:
-            user_list.append(child)
-
         print(user_list)
         # Profiles that have a parent = self.request.user
         # form.fields['user'].queryset = User.objects.filter(pk__in=self.request.user)
         return form
-
+'''
     def get_queryset(self):
         users = User.objects.all()
         user_list = []
@@ -148,6 +155,7 @@ class GroupQueueCreateView(CreateView):
             print(user_list)
             return user_list
 '''
+
 class GroupQueueTemplateView(TemplateView):
     model = GroupQueue
     template_name = 'main/groupqueue_list.html'

@@ -2,10 +2,10 @@
 @import url("prettyphoto.css");   /* prettyphoto */
 @import url("mosaic.css");        /* mosaic */
 
-html {
-    position: relative;
-    min-height: 100%;
-}
+/*html {*/
+    /*position: relative;*/
+    /*min-height: 100%;*/
+/*}*/
 
 body {
 	font-family: 'AmbleLight', Arial, Helvetica, sans-serif;
@@ -882,11 +882,11 @@ footer {
 	background: #333;
 	margin-top: 40px;
 	color: #fff;
-	position: absolute;;
-	left: 0;
-	bottom: 0;
-	height: auto;
-	width: 100%;
+	/*position: absolute;;*/
+	/*left: 0;*/
+	/*bottom: 0;*/
+	/*height: auto;*/
+	/*width: 100%;*/
 }
 
 footer .container {
