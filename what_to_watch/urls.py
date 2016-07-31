@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from main.views import IndexView, CreateParentView, ParentProfileUpdateView, ProgramListView, ProgramDetailView, QueueCreateView, QueueListView, GroupQueueCreateView, GroupQueueTemplateView, QueueProgramDeleteView, CreateChildView, ChildrenProfileListView, ChildProfileUpdateView
+from main.views import IndexView, CreateParentView, ParentProfileUpdateView, ProgramListView, ProgramDetailView, QueueCreateView, QueueListView, FamilyQueueCreateView, FamilyQueueTemplateView, QueueProgramDeleteView, CreateChildView, ChildrenProfileListView, ChildProfileUpdateView
 from django.contrib.auth.decorators import login_required
 from django.conf.urls.static import static
 from django.conf import settings
@@ -31,8 +31,8 @@ urlpatterns = [
     url(r'^queue_create/(?P<pk>\d+)/(?P<program_pk>\d+)/$', login_required(QueueCreateView.as_view()), name='queue_create_view'),
     url(r'^queue_list_view/$', login_required(QueueListView.as_view()), name='queue_list_view'),
     url(r'^queue_delete_view/(?P<pk>\d+)/$', login_required(QueueProgramDeleteView.as_view()), name='queue_program_delete_view'),
-    url(r'^group_queue_create/$', login_required(GroupQueueCreateView.as_view()), name='group_queue_create_view'),
-    url(r'^group_queue/$', login_required(GroupQueueTemplateView.as_view()), name='group_queue_template_view'),
+    url(r'^family_queue_create/$', login_required(FamilyQueueCreateView.as_view()), name='family_queue_create_view'),
+    url(r'^family_queue/$', login_required(FamilyQueueTemplateView.as_view()), name='family_queue_template_view'),
     url(r'^sign_up/$', CreateParentView.as_view(), name='create_parent_view'),
     url(r'^sign_up_family/$', login_required(CreateChildView.as_view()), name='create_child_view'),
     url(r'^child_profile/(?P<pk>\d+)/$', login_required(ChildProfileUpdateView.as_view()), name='child_profile_update_view'),

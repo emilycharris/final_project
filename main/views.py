@@ -4,13 +4,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse_lazy
 from django.conf.urls import url, include
-from main.models import Program, Profile, Queue, Rating, QueueProgram, GroupQueue
+from main.models import Program, Profile, Queue, Rating, QueueProgram, FamilyQueue
 from django.http import HttpResponseRedirect
 import random
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
-
 
 # Create your views here.
 
@@ -76,6 +75,16 @@ class ProgramListView(ListView):
         else:
             return Program.objects.all()
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        program_queryset = self.request.user.queue.queueprogram_set.all()
+        queue_list = []
+        for item in program_queryset:
+            queue_list.append(item.program.name)
+        print(queue_list)
+        context['queue_list'] = queue_list
+        return context
+
 class ProgramDetailView(DetailView):
     model = Program
 
@@ -94,7 +103,7 @@ class QueueCreateView(CreateView):
         form.queue = Queue.objects.get(id=queue)
         form.program = Program.objects.get(id=program)
         form.save()
-        return HttpResponseRedirect(reverse_lazy('queue_list_view')) # <<- change
+        return HttpResponseRedirect(reverse_lazy('program_list_view')) # <<- change
 
 class QueueListView(ListView):
     model = QueueProgram
@@ -114,8 +123,8 @@ class QueueProgramDeleteView(DeleteView):
     model = QueueProgram
     success_url = reverse_lazy('queue_list_view')
 
-class GroupQueueCreateView(CreateView):
-    model = GroupQueue
+class FamilyQueueCreateView(CreateView):
+    model = FamilyQueue
     fields = ['user']
     success_url = reverse_lazy('group_queue_template_view')
 
@@ -135,13 +144,13 @@ class GroupQueueCreateView(CreateView):
         form.fields['user'].queryset = User.objects.filter(pk__in=user_list)
         return form
 
-class GroupQueueTemplateView(TemplateView):
-    model = GroupQueue
+class FamilyQueueTemplateView(TemplateView):
+    model = FamilyQueue
     template_name = 'main/groupqueue_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        group = GroupQueue.objects.filter(user=self.request.user).last()
+        group = FamilyQueue.objects.filter(user=self.request.user).last()
         program_list, rating_limit = list(group.get_random_program())
         upper_range = len(program_list)-1
         index_value = random.randint(0,upper_range)

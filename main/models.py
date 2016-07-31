@@ -6,7 +6,6 @@ from datetime import datetime
 
 # Create your models here.
 
-
 class Rating(models.Model):
     rating = models.CharField(max_length=10)
     description = models.CharField(max_length=50, null=True, blank=True)
@@ -14,8 +13,6 @@ class Rating(models.Model):
 
     def __str__(self):
         return self.rating
-
-
 
 class Profile(models.Model):
     user = models.OneToOneField('auth.User')
@@ -32,8 +29,7 @@ class Profile(models.Model):
     def photo_url(self):
         if self.photo:
             return self.photo.url
-        return "http://www.clker.com/cliparts/f/Z/G/4/h/Q/no-image-available-md.png"
-
+        return 'profile_photos/sketch.png'
 
 class Program(models.Model):
     name = models.CharField(max_length=500)
@@ -87,7 +83,7 @@ class QueueProgram(models.Model):  #thru table between queue and program
     def __str__(self):
         return str(self.program)
 
-class GroupQueue(models.Model):
+class FamilyQueue(models.Model):
     user = models.ManyToManyField(User)
 
     def get_random_program(self):

@@ -2,14 +2,25 @@
 @import url("prettyphoto.css");   /* prettyphoto */
 @import url("mosaic.css");        /* mosaic */
 
-/*html {*/
-    /*position: relative;*/
-    /*min-height: 100%;*/
-/*}*/
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 
 body {
 	font-family: 'AmbleLight', Arial, Helvetica, sans-serif;
 	font-size: 13px;
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;}
 }
 
 .logo {
@@ -882,11 +893,11 @@ footer {
 	background: #333;
 	margin-top: 40px;
 	color: #fff;
-	/*position: absolute;;*/
-	/*left: 0;*/
-	/*bottom: 0;*/
-	/*height: auto;*/
-	/*width: 100%;*/
+	position: absolute;;
+	left: 0;
+	bottom: 0;
+	height: auto;
+	width: 100%;
 }
 
 footer .container {

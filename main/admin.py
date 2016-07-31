@@ -1,5 +1,5 @@
 from django.contrib import admin
-from main.models import Rating, Profile, Program, Queue, QueueProgram, GroupQueue
+from main.models import Rating, Profile, Program, Queue, QueueProgram, FamilyQueue
 
 # Register your models here.
 
@@ -22,8 +22,8 @@ class QueueAdmin(admin.ModelAdmin):
 
 admin.site.register(Queue, QueueAdmin)
 
-class GroupQueueAdmin(admin.ModelAdmin):
+class FamilyQueueAdmin(admin.ModelAdmin):
         list_display = ['id']
 
 
-admin.site.register(GroupQueue, GroupQueueAdmin)
+admin.site.register(FamilyQueue, FamilyQueueAdmin)
