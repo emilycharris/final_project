@@ -1,21 +1,25 @@
 {% extends "base.html" %}
-{% block content %}
-<img src="{{object.banner}}" alt="" class='centered' enctype=multipart/form-data/><hr>
-<h1 class='heading'>{{object.name}}</h1>
-<hr>
-<br>
-<h5>Rating: {{object.rating}}</h5><br>
-<h5>Runtime: {{object.runtime}}</h5><br>
-<h5>Thumbnail: <img class='thumbnail' src="{{object.thumbnail}}" alt="" enctype=multipart/form-data/></h5><br>
-<h5>Overview: {{object.overview}}</h5><br>
-<h5>Common Sense Media (CSM) Review: {{object.review}}</h5><br>
-<h5>CSM Positive Message: {{object.positive_message}}</h5><br>
-<h5>CSM Positive Role Model: {{object.positive_role_model}}</h5><br>
-<h5>CSM Violence Warning: {{object.violence}}</h5><br>
-<h5>CSM Sexual Content Warning: {{object.sex}}</h5><br>
-<h5>CSM Language Warning: {{object.language}}</h5><br>
-<h5>CSM Consumerism Warning: {{object.consumerism}}</h5><br>
-<h5>CSM Substance Warning: {{object.substance}}</h5><br>
+{% load staticfiles %}
 
+{% block content %}
+<div class="container">
+  <br>
+  <img src="{{object.banner}}" alt="" class='centered' enctype=multipart/form-data/><hr>
+  <h1 class='heading'>{{object.name}}</h1>
+  <p>Rating: {{object.rating}}</p><br>
+  <p>Runtime: {{object.runtime}}</p><br>
+  <p>Overview: {{object.overview}}</p><br>
+
+{% if request.user.profile.parent == None %}
+  <h5>Common Sense Media (CSM) Review: {{object.review}}</h5><br>
+  <h5>CSM Positive Message: {{object.positive_message}}</h5><br>
+  <h5>CSM Positive Role Model: {{object.positive_role_model}}</h5><br>
+  <h5>CSM Violence Warning: {{object.violence}}</h5><br>
+  <h5>CSM Sexual Content Warning: {{object.sex}}</h5><br>
+  <h5>CSM Language Warning: {{object.language}}</h5><br>
+  <h5>CSM Consumerism Warning: {{object.consumerism}}</h5><br>
+  <h5>CSM Substance Warning: {{object.substance}}</h5><br>
+  {% endif %}
+</div>
 
 {% endblock %}
