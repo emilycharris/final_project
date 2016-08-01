@@ -13,7 +13,6 @@ from django.shortcuts import redirect
 from django.core.mail import send_mail
 from what_to_watch.settings import EMAIL_HOST_USER
 
-
 # Create your views here.
 
 class IndexView(TemplateView):
@@ -57,6 +56,7 @@ class ChildProfileUpdateView(UpdateView):
 
 class ChildrenProfileListView(ListView):
     model = Profile
+    template_name = 'main/children_profile_list.html'
 
     def get_queryset(self):
         children = Profile.objects.filter(parent=self.request.user.id)
@@ -145,7 +145,6 @@ class QueueCreateView(CreateView):
         else:
             return HttpResponse('Make sure all fields are entered and valid.')
 
-
 class QueueListView(ListView):
     model = QueueProgram
     paginate_by = 16
@@ -160,6 +159,28 @@ class QueueListView(ListView):
         else:
             return QueueProgram.objects.filter(queue=self.request.user.queue.id)
 
+class ChildQueueListView(ListView):
+    model = QueueProgram
+    paginate_by = 16
+    template_name = 'main/child_queue_list.html'
+
+    def get_queryset(self, **kwargs):
+        programs = QueueProgram.objects.all()
+        queue = self.kwargs.get('pk')
+        search = self.request.GET.get('search')
+        if search:
+            search_name = search.replace("+", " ").lower()
+            return QueueProgram.objects.filter(queue=self.request.user.queue.id).filter(program__contains=search_name)
+        else:
+            return QueueProgram.objects.filter(queue=queue)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        child_id = self.kwargs.get('pk')
+        child = Profile.objects.get(id=child_id)
+        context['child'] = child
+        return context
+
 class QueueProgramDeleteView(DeleteView):
     model = QueueProgram
     success_url = reverse_lazy('queue_list_view')
@@ -167,7 +188,7 @@ class QueueProgramDeleteView(DeleteView):
 class FamilyQueueCreateView(CreateView):
     model = FamilyQueue
     fields = ['user']
-    success_url = reverse_lazy('group_queue_template_view')
+    success_url = reverse_lazy('family_queue_template_view')
 
     def get_form(self):
         form = super().get_form()
@@ -186,7 +207,7 @@ class FamilyQueueCreateView(CreateView):
 
 class FamilyQueueTemplateView(TemplateView):
     model = FamilyQueue
-    template_name = 'main/groupqueue_list.html'
+    template_name = 'main/familyqueue_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -200,15 +221,11 @@ class FamilyQueueTemplateView(TemplateView):
 
 def login_success(request):
     pass
-#     """
-#     Redirects users based on whether they are the parent or child
-#     """
 #     if request.user.profile.filter(parent==None):
-#         # user is a parent
-#         if request.user.profile.filter(email != None):
-#             return redirect("program_list_view")
+#         if request.user.profile.filter(email == None):
+#             return redirect("profile_update_view")
 #         else:
-#             return redirect('profile_update_view')
+#             return redirect('program_list_view')
 #     else:
 #         print(request.user.profile.display_name)
 #         return redirect("program_list_view")

@@ -15,6 +15,9 @@
             <ul class="socials-member">
               <li class="first-title">Edit Profile</li>
                 <li><a href="{% url 'child_profile_update_view' object.pk %}"><i class="icon-edit"></i></a></li>
+                <li class="first-title">Edit Queue</li>
+                <li><a href="{% url 'child_queue_list_view' object.pk %}"><i class="icon-edit"></i></a></li>
+
             </ul>
         </div>
         {% endfor %}

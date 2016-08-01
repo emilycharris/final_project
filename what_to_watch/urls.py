@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from main.views import IndexView, CreateParentView, ParentProfileUpdateView, ProgramListView, ProgramDetailView, QueueCreateView, QueueListView, FamilyQueueCreateView, FamilyQueueTemplateView, QueueProgramDeleteView, CreateChildView, ChildrenProfileListView, ChildProfileUpdateView, login_success
+from main.views import IndexView, CreateParentView, ParentProfileUpdateView, ProgramListView, ProgramDetailView, QueueCreateView, QueueListView, ChildQueueListView, FamilyQueueCreateView, FamilyQueueTemplateView, QueueProgramDeleteView, CreateChildView, ChildrenProfileListView, ChildProfileUpdateView, login_success
 from django.contrib.auth.decorators import login_required
 from django.conf.urls.static import static
 from django.conf import settings
@@ -29,7 +29,8 @@ urlpatterns = [
     url(r'^program_list/$', login_required(ProgramListView.as_view()), name='program_list_view'),
     url(r'^program_detail/(?P<pk>\d+)/$', login_required(ProgramDetailView.as_view()), name='program_detail_view'),
     url(r'^queue_create/(?P<pk>\d+)/(?P<program_pk>\d+)/$', login_required(QueueCreateView.as_view()), name='queue_create_view'),
-    url(r'^queue_list_view/$', login_required(QueueListView.as_view()), name='queue_list_view'),
+    url(r'^queue_list/$', login_required(QueueListView.as_view()), name='queue_list_view'),
+    url(r'^child_queue_list/(?P<pk>\d+)/$', login_required(ChildQueueListView.as_view()), name='child_queue_list_view'),
     url(r'^queue_delete_view/(?P<pk>\d+)/$', login_required(QueueProgramDeleteView.as_view()), name='queue_program_delete_view'),
     url(r'^family_queue_create/$', login_required(FamilyQueueCreateView.as_view()), name='family_queue_create_view'),
     url(r'^family_queue/$', login_required(FamilyQueueTemplateView.as_view()), name='family_queue_template_view'),
