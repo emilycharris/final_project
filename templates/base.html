@@ -51,6 +51,7 @@
     	<div class="container">
             <div class="row">
                 <div class="span4">
+                  <br><br>
                     <a href="{% url 'index_view' %}"><img class="logo" src="{% static 'main/theme_color_4/images/emily logo.png' %}" alt=""></a>
 
                 </div>
@@ -129,11 +130,9 @@
                 <div class="span4">
                     <div class="top-part">
                         <ul class="footer-links">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about_us.html">About us</a></li>
-                            <li><a href="blog_list.html">Blog</a></li>
-                            <li><a href="sitemap.html">Sitemap</a></li>
-                            <li><a href="contact_us.html">Contact us</a></li>
+                            <li><a href="{% url 'index_view' %}">Home</a></li>
+                            <li><a href="">About me</a></li>
+                            <li><a href="">Contact me</a></li>
                         </ul>
                     </div>
                     {# <div class="socials">#}
@@ -159,19 +158,20 @@
                 {# </div>#}
             </div>
         </div>
+          <div class="bottom-area">
+            <div class="container">
+                <div class="row">
+                    <div class="span6">
+                        Copyright © 2013 Cordic. All rights reserved.
+                      </div>
+                      <div class="span6 text-right">
+                        Site Developed by Emily Harris © 2016
+                      </div>
+                  </div>
+              </div>
+          </div>
 
-        <div class="bottom-area">
-          {# <div class="container">#}
-              <div class="row">
-                  <div class="span6">
-                      Copyright © 2013 Cordic. All rights reserved.
-                    </div>
-                    <div class="span6 text-right">
-                      Socialize with us on Twitter, Facebook, Dribbble or Rss
-                    </div>
-                </div>
-            {# </div>#}
-        </div>
+
     </footer>
 
     <script src="{% static 'main/theme_color_4/js/jquery.js' %}"></script>

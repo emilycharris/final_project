@@ -10,6 +10,8 @@ import random
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
+from django.core.mail import send_mail
+
 
 # Create your views here.
 
@@ -157,3 +159,17 @@ class FamilyQueueTemplateView(TemplateView):
         context['rating_limit'] = rating_limit
         context['random_program'] = program_list[index_value]
         return context
+
+def login_success(request):
+    """
+    Redirects users based on whether they are the parent or child
+    """
+    if request.user.profile.filter(parent==None):
+        # user is a parent
+        if request.user.profile.filter(email != None):
+            return redirect("program_list_view")
+        else:
+            return redirect('profile_update_view')
+    else:
+        print(request.user.profile.display_name)
+        return redirect("program_list_view")

@@ -58,12 +58,8 @@ class Program(models.Model):
             return self.banner.url
         return "http://www.clker.com/cliparts/f/Z/G/4/h/Q/no-image-available-md.png"
 
-
-
-
     def __str__(self):
         return self.name
-
 
 class Queue(models.Model):
     user = models.OneToOneField('auth.User')

@@ -896,7 +896,7 @@ footer {
 	position: absolute;;
 	left: 0;
 	bottom: 0;
-	height: auto;
+	height: auto;;
 	width: 100%;
 }
 
@@ -910,11 +910,12 @@ footer .container {
 	padding: 20px 0;
 	margin-bottom: 20px;
 	color: #ccc;
+  width: 212px;
 }
 
 .footer-links {
 	list-style: none;
-	margin-left: 0;
+	margin-left: 0px;
 }
 
 .footer-links li {
@@ -958,7 +959,7 @@ footer .container {
 	background: #61a8f0;
 	padding: 5px 0;
 	color: #000;
-	margin-top: 20px;
+	margin-top: 0px;
 }
 
 .text-right {
