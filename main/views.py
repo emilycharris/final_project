@@ -11,6 +11,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.core.mail import send_mail
+from what_to_watch.settings import EMAIL_HOST_USER
 
 
 # Create your views here.
@@ -83,7 +84,6 @@ class ProgramListView(ListView):
         queue_list = []
         for item in program_queryset:
             queue_list.append(item.program.name)
-        print(queue_list)
         context['queue_list'] = queue_list
         return context
 
@@ -104,8 +104,47 @@ class QueueCreateView(CreateView):
         program = self.kwargs.get('program_pk')
         form.queue = Queue.objects.get(id=queue)
         form.program = Program.objects.get(id=program)
+        rating_limit = self.request.user.profile.rating_limit
+        if rating_limit:
+            if form.program.rating.id > rating_limit.id:
+                return self.send_email(form,**kwargs)
+                form.save()
         form.save()
-        return HttpResponseRedirect(reverse_lazy('program_list_view')) # <<- change
+        return HttpResponseRedirect(reverse_lazy('program_list_view'))
+
+    def send_email(self, form, **kwargs):
+        rating_limit = self.request.user.profile.rating_limit
+        if self.request.user.profile.display_name:
+            child = self.request.user.profile.display_name
+        else:
+            child = self.request.user
+
+        if self.request.user.profile.parent.display_name:
+            parent = self.request.user.profile.parent.display_name
+        else:
+            parent = self.request.user.profile.parent
+        rating = form.program.rating
+        review = form.program.review
+        positive_message = form.program.positive_message
+        positive_role_model = form.program.positive_message
+        violence = form.program.violence
+        sex = form.program.sex
+        language = form.program.language
+        consumerism = form.program.consumerism
+        substance = form.program.substance
+        subject = "New Program Added that Exceeds Rating Limit"
+        message = "Hi {},\n\nWe just wanted to let you know that {} added the program {} which exceeds the rating limit of {} you set up.\n\nIf you'd like to remove this show from queue, please sign in to your account.\n\nYou may want to know the following:\n\nThe show is rated {}.\n\nReview:\n{}\n\nPositive Message:\n{}\n\nPositive Role Model:\n{}\n\nViolence:\n{}\n\nSex:\n{}\n\nLanguage:\n{}\n\nConsumerism:\n{}\n\nSubstance:\n{}\n\n\n\nThis is an unmanaged account.  Please do not reply.".format(parent,child, form.program, rating_limit, rating, review, positive_message, positive_role_model, violence, sex, language, consumerism, substance)
+        from_email = EMAIL_HOST_USER
+        to_email = self.request.user.profile.parent.email
+        if subject and message and from_email:
+            try:
+                send_mail(subject, message, from_email, [str(to_email)])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return HttpResponseRedirect(reverse_lazy('program_list_view'))
+        else:
+            return HttpResponse('Make sure all fields are entered and valid.')
+
 
 class QueueListView(ListView):
     model = QueueProgram
@@ -142,7 +181,6 @@ class FamilyQueueCreateView(CreateView):
         children = Profile.objects.filter(parent=parent)
         for child in children:
             user_list.append(child.id)
-        print(user_list)
         form.fields['user'].queryset = User.objects.filter(pk__in=user_list)
         return form
 
@@ -161,15 +199,16 @@ class FamilyQueueTemplateView(TemplateView):
         return context
 
 def login_success(request):
-    """
-    Redirects users based on whether they are the parent or child
-    """
-    if request.user.profile.filter(parent==None):
-        # user is a parent
-        if request.user.profile.filter(email != None):
-            return redirect("program_list_view")
-        else:
-            return redirect('profile_update_view')
-    else:
-        print(request.user.profile.display_name)
-        return redirect("program_list_view")
+    pass
+#     """
+#     Redirects users based on whether they are the parent or child
+#     """
+#     if request.user.profile.filter(parent==None):
+#         # user is a parent
+#         if request.user.profile.filter(email != None):
+#             return redirect("program_list_view")
+#         else:
+#             return redirect('profile_update_view')
+#     else:
+#         print(request.user.profile.display_name)
+#         return redirect("program_list_view")
