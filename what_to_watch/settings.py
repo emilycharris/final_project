@@ -177,3 +177,8 @@ if AWS_STORAGE_BUCKET_NAME:
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10
+}
