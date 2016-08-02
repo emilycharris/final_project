@@ -7,26 +7,35 @@
   <form class="form-horizontal" action="" method="post">
     {% csrf_token %}
     <br>
-            <div class="control-group">
-                <label class="control-label" for="display_name">Display Name:</label>
-                <div class="controls">
-                  {{form.display_name}}
-                </div>
-            </div>
     <div class="control-group">
-        <label class="control-label" for="display_name">Email:</label>
+        <label class="control-label" for="display_name">Display Name:</label>
+        <div class="controls">
+          {{form.display_name}}
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="email">Email:</label>
         <div class="controls">
           {{form.email}}
         </div>
     </div>
+
     <div class="control-group">
+        <label class="control-label" for="photo">Profile Photo:</label>
         <div class="controls">
-        {# <label class="checkbox">#}
-        {# <input type="checkbox"> Remember me#}
-        {# </label><br/>#}
-        <button type="submit" class="btn">Submit Profile</button>
+          {{form.photo}}
         </div>
     </div>
+
+
+    <div class="control-group">
+        <div class="controls">
+        <input type="submit" class="btn">Submit Profile</input>
+        </div>
+    </div>
+
+
 
   </form>
   <br><br>

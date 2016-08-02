@@ -29,7 +29,6 @@ class Profile(models.Model):
     def photo_url(self):
         if self.photo:
             return self.photo.url
-        return 'profile_photos/sketch.png'
 
 class Program(models.Model):
     name = models.CharField(max_length=500)
@@ -101,7 +100,8 @@ class FamilyQueue(models.Model):
             for program in user.queue.queueprogram_set.all():
                 if program.program.rating.id <= rating_limit:
                     program_list.append(program)
-        return (program_list, rating_limit_name)
+            return (program_list, rating_limit_name)
+
 
 @receiver(post_save, sender='auth.User')
 def create_user_profile(**kwargs):

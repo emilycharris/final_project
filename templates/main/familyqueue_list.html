@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
 
-  <div class="container">
+    {% if random_program %}
 
     <h1>Based on your queues, we think you should watch:</h1>
 
@@ -16,14 +16,11 @@
                   {# <img class="icon-picture" width=84px src="{{random_program.program.thumbnail}}" alt="" enctype=multipart/form-data>#}
                   <h3>{{random_program.program.name}}</h3>
                   {% if network %}
-                  <span class="data"><h5>{{random_program.program.network}}   &nbsp;&nbsp;&nbsp;   {{random_program.program.rating}}   &nbsp;&nbsp;&nbsp;   {{random_program.program.queueprogram}}</h5></span>
-                  {% else %}
-                  <span class="data">{{random_program.program.rating}}   &nbsp;&nbsp;&nbsp;   {{random_program.program.queue}}</span><br/>
-
+                  <span class="data"><h5>Network: {{random_program.program.network}}   &nbsp;&nbsp;&nbsp;   {{random_program.program.rating}}</h5></span>
                   {% endif %}
-                  <p>
-                    {{random_program.program.overview}}
-                  </p>
+                  <span class="data">Rating: {{random_program.program.rating}}<br>
+                  </span><br/><br>
+                  <p>Overview: {{random_program.program.overview}}</p>
               </div>
 
 
@@ -31,74 +28,20 @@
           </div>
 
 
-          {# <aside class="span3" display='none'>#}
-
-              <!-- Text widget -->
-              {# <div class="wrap">#}
-                  {# <h3>Text Widget</h3>#}
-                  {# <p>#}
-                      {# Donec seid odio dui. Nullalit libero, alea pharetra augue. Nullam id dolor ideacto vehicula SockMonkee lorem dolor. Donec seid odio dui. Nullalit libero, alea pharetra augue. Nullam id dolor ideacto vehicula SockMonkee lorem dolor.#}
-                  {# </p>#}
-              {# </div>#}
-
-
-              <!-- Categories widget -->
-              {# <div class="wrap">#}
-                  {# <h3>Categories</h3>#}
-                  {# <ul class="unstyled">#}
-                      {# <li><a href="#"><i class="icon-minus"></i> Wordpress</a></li>#}
-                      {# <li><a href="#"><i class="icon-minus"></i> Blogs</a></li>#}
-                      {# <li><a href="#"><i class="icon-minus"></i> Html Templates</a></li>#}
-                      {# <li><a href="#"><i class="icon-minus"></i> Faqs</a></li>#}
-                      {# <li><a href="#"><i class="icon-minus"></i> Design</a></li>#}
-                      {# <li><a href="#"><i class="icon-minus"></i> Brands</a></li>#}
-                  {# </ul>#}
-              {# </div>#}
-
-
-              <!-- Tags widget -->
-              {# <div class="wrap">#}
-                  {# <h3>Tags</h3>#}
-                  {# <ul class="tags">#}
-                      {# <li><a href="#">Wordpress</a></li>#}
-                      {# <li><a href="#">Blogs</a></li>#}
-                      {# <li><a href="#">Html Templates</a></li>#}
-                      {# <li><a href="#">Faqs</a></li>#}
-                      {# <li><a href="#">Design</a></li>#}
-                      {# <li><a href="#">Brands</a></li>#}
-                      {# <li><a href="#">Wordpress</a></li>#}
-                      {# <li><a href="#">Blogs</a></li>#}
-                      {# <li><a href="#">Html Templates</a></li>#}
-                      {# <li><a href="#">Faqs</a></li>#}
-                      {# <li><a href="#">Design</a></li>#}
-                      {# <li><a href="#">Brands</a></li>#}
-                  {# </ul>#}
-              {# </div>#}
-
-
-              <!-- video widget -->
-              {# <div class="wrap">#}
-                {# <h3>Video widget</h3>#}
-                  {# <div class="video-container main-img">#}
-                      {# <iframe src="http://player.vimeo.com/video/51230259?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> <p><a href="http://vimeo.com/51230259">CATZILLA</a> from <a href="http://vimeo.com/platigeimage">Platige Image</a> on <a href="http://vimeo.com">Vimeo</a>.</p>#}
-                  {# </div>#}
-              {# </div>#}
-
-          {# </aside>#}
-
-      </div>
-
-  </div><!--/container-->
-
-
-
-
-
-
+        
   <h4><em>(Parents, these shows are all {{rating_limit}} or less)</em></h4>
   <br>
   <br>
-  
+  {% else %}
+  <br>
+  <h3>Oops! It appears that there are no programs in these queues!</h3>  <h4><br><br>Do you want to add programs to your queue?</h4>
+  <br>
+  <a class='btn btn-primary btn-large' type="button" name="button" href="{% url 'program_list_view' %}">Add Programs</a>
+  <br>
+  <a href="{% url 'family_queue_create_view' %}">No thanks, let me select my family members again.</a>
+
+  {% endif %}
+
 </div>
 
 

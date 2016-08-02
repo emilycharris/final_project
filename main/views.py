@@ -12,6 +12,9 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.core.mail import send_mail
 from what_to_watch.settings import EMAIL_HOST_USER
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+
 
 # Create your views here.
 
@@ -211,13 +214,18 @@ class FamilyQueueTemplateView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        group = FamilyQueue.objects.filter(user=self.request.user).last()
+        group = FamilyQueue.objects.last()
         program_list, rating_limit = list(group.get_random_program())
-        upper_range = len(program_list)-1
-        index_value = random.randint(0,upper_range)
-        context['rating_limit'] = rating_limit
-        context['random_program'] = program_list[index_value]
-        return context
+        print(len(program_list))
+        if len(program_list) >= 1:
+            upper_range = len(program_list)-1
+            print('upper range', upper_range)
+            index_value = random.randint(0,upper_range)
+            context['rating_limit'] = rating_limit
+            context['random_program'] = program_list[index_value]
+            return context
+        else:
+            pass
 
 def login_success(request):
     pass

@@ -11,14 +11,18 @@
   <p>Overview: {{object.overview}}</p><br>
 
 {% if request.user.profile.parent == None %}
-  <h5>Common Sense Media (CSM) Review: {{object.review}}</h5><br>
-  <h5>CSM Positive Message: {{object.positive_message}}</h5><br>
-  <h5>CSM Positive Role Model: {{object.positive_role_model}}</h5><br>
-  <h5>CSM Violence Warning: {{object.violence}}</h5><br>
-  <h5>CSM Sexual Content Warning: {{object.sex}}</h5><br>
-  <h5>CSM Language Warning: {{object.language}}</h5><br>
-  <h5>CSM Consumerism Warning: {{object.consumerism}}</h5><br>
-  <h5>CSM Substance Warning: {{object.substance}}</h5><br>
+<br>
+<h4>For Parents Only:</h4>
+<p><em>This information is provided to those signed in with a parent account only.  The content may be inappropriate for some users, but is provided to assist parents make informed decisions.</em></p>
+<hr>
+  <p>Review: <br>{{object.review}}</p><br>
+  <p>Positive Message: <br>{{object.positive_message}}</p><br>
+  <p>Positive Role Model: <br>{{object.positive_role_model}}</p><br>
+  <p>Violence Warning: <br>{{object.violence}}</p><br>
+  <p>Sexual Content Warning: <br>{{object.sex}}</p><br>
+  <p>Language Warning: <br>{{object.language}}</p><br>
+  <p>Consumerism Warning: <br>{{object.consumerism}}</p><br>
+  <p>Substance Warning: <br>{{object.substance}}</p><br>
   {% endif %}
 </div>
 
