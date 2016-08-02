@@ -228,12 +228,11 @@ class FamilyQueueTemplateView(TemplateView):
             pass
 
 def login_success(request):
-    pass
-#     if request.user.profile.filter(parent==None):
-#         if request.user.profile.filter(email == None):
-#             return redirect("profile_update_view")
-#         else:
-#             return redirect('program_list_view')
-#     else:
-#         print(request.user.profile.display_name)
-#         return redirect("program_list_view")
+    profile = Profile.objects.get(user=request.user)
+    if profile.parent == None:
+        if profile.email:
+            return redirect('program_list_view')
+        else:
+            return redirect("profile_update_view")
+    else:
+        return redirect("program_list_view")

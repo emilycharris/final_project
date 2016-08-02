@@ -133,7 +133,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 
-LOGIN_REDIRECT_VIEW = '/login_success'
+LOGIN_REDIRECT_URL = '/login_success'
 
 EMAIL_HOST_USER = 'familytvonline.mail@gmail.com'
 
