@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from main.views import IndexView, CreateParentView, ParentProfileUpdateView, ProgramListView, ProgramDetailView, QueueCreateView, QueueListView, ChildQueueListView, FamilyQueueCreateView, FamilyQueueTemplateView, QueueProgramDeleteView, CreateChildView, ChildrenProfileListView, ChildProfileUpdateView, login_success
+
 from django.contrib.auth.decorators import login_required
 from django.conf.urls.static import static
 from django.conf import settings
@@ -38,6 +39,8 @@ urlpatterns = [
     url(r'^sign_up_family/$', login_required(CreateChildView.as_view()), name='create_child_view'),
     url(r'^child_profile/(?P<pk>\d+)/$', login_required(ChildProfileUpdateView.as_view()), name='child_profile_update_view'),
     url(r'^children_profile_list/$', login_required(ChildrenProfileListView.as_view()), name='children_profile_list_view'),
+    # url(r'^api/program/$', ProgramListAPIView.as_view(), name='program_list_api_view'),
+
     url(r'^login_success/$', login_success, name='login_success'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
