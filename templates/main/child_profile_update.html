@@ -2,11 +2,13 @@
 {% block content %}
 
 <div class="container">
-  <h1>Update Family Account Profile</h1>
+  <h1>Update Profile for {{object}}</h1>
+
 
   <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <br>
+    {% if request.user.profile.parent == None %}
             <div class="control-group">
                 <label class="control-label" for="display_name">Display Name:</label>
                 <div class="controls">
@@ -19,7 +21,7 @@
           {{form.rating_limit}}
         </div>
     </div>
-
+    {% endif %}
     <div class="control-group">
         <label class="control-label" for="photo">Profile Photo:</label>
         <div class="controls">

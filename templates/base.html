@@ -70,10 +70,12 @@
 
                             </li>
                             <!--Profile-->
+                            {% if user.profile.parent == None %}
                             <li class="single" data-original-title>
                                 <img class="menu-top" src="{% static 'main/theme_color_4/images/menu-top.png' %}" alt="" >
                                 <a href="{% url 'profile_update_view' %}">Profile</a>
                             </li>
+                            {% endif %}
                             <!--Family-->
                             {% if user.profile.parent == None %}
                             <li class="single" data-original-title>

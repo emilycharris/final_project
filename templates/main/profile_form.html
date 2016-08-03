@@ -2,7 +2,12 @@
 {% block content %}
 
 <div class="container">
-  <h1>Update Profile</h1>
+  {% if user.profile.display_name %}
+  <h1>Update {{user.profile.display_name}}'s Profile</h1>
+  {% else %}
+  <h1>Update {{user}}'s Profile</h1>
+
+  {% endif %}
 
   <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
