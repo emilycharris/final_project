@@ -154,15 +154,15 @@ class QueueListView(ListView):
     model = QueueProgram
     paginate_by = 16
 
-    def get_queryset(self, **kwargs):
-        programs = QueueProgram.objects.all()
-        queue = self.request.user.queue.id
-        search = self.request.GET.get('search')
-        if search:
-            search_name = search.replace("+", " ").lower()
-            return QueueProgram.objects.filter(queue=self.request.user.queue.id).filter(program__icontains=search_name)
-        else:
-            return QueueProgram.objects.filter(queue=self.request.user.queue.id)
+    # def get_queryset(self, **kwargs):
+    #     programs = QueueProgram.objects.all()
+    #     queue = self.request.user.queue.id
+    #     search = self.request.GET.get('search')
+    #     if search:
+    #         search_name = search.replace("+", " ").lower()
+    #         return QueueProgram.objects.filter(queue=self.request.user.queue.id).filter(program__icontains=search_name)
+    #     else:
+    #         return QueueProgram.objects.filter(queue=self.request.user.queue.id)
 
 class ChildQueueListView(ListView):
     model = QueueProgram

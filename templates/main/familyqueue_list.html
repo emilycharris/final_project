@@ -23,25 +23,26 @@
                   <p>Overview: {{random_program.program.overview}}</p>
               </div>
 
+              <br>
+              <h4><em>(Parents, these shows are all {{rating_limit}} or less)</em></h4>
+              <br>
+              <br>
+              {% else %}
+              <br>
+              <h3>Oops! It appears that there are no programs in these queues!</h3>  <h4><br><br>Do you want to add programs to your queue?</h4>
+              <br>
+              <a class='btn btn-primary btn-large' type="button" name="button" href="{% url 'program_list_view' %}">Add Programs</a>
+              <br>
+              <a href="{% url 'family_queue_create_view' %}">No thanks, let me select my family members again.</a>
 
+              {% endif %}
 
           </div>
 
 
-        
-  <h4><em>(Parents, these shows are all {{rating_limit}} or less)</em></h4>
-  <br>
-  <br>
-  {% else %}
-  <br>
-  <h3>Oops! It appears that there are no programs in these queues!</h3>  <h4><br><br>Do you want to add programs to your queue?</h4>
-  <br>
-  <a class='btn btn-primary btn-large' type="button" name="button" href="{% url 'program_list_view' %}">Add Programs</a>
-  <br>
-  <a href="{% url 'family_queue_create_view' %}">No thanks, let me select my family members again.</a>
 
-  {% endif %}
 
+</div>
 </div>
 
 
