@@ -62,8 +62,10 @@ class ChildrenProfileListView(ListView):
     template_name = 'main/children_profile_list.html'
 
     def get_queryset(self):
-        children = Profile.objects.filter(parent=self.request.user.id)
+        children = Profile.objects.filter(parent=self.request.user.id).order_by('rating_limit')
         return children
+
+
 
 class ProgramListView(ListView):
     model = Program
