@@ -158,7 +158,7 @@ class QueueListView(ListView):
         search = self.request.GET.get('search')
         if search:
             search_name = search.replace("+", " ").lower()
-            return QueueProgram.objects.filter(queue=self.request.user.queue.id).filter(program__contains=search_name)
+            return QueueProgram.objects.filter(queue=self.request.user.queue.id).filter(program__icontains=search_name)
         else:
             return QueueProgram.objects.filter(queue=self.request.user.queue.id)
 
