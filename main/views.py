@@ -112,8 +112,8 @@ class QueueCreateView(CreateView):
         rating_limit = self.request.user.profile.rating_limit
         if rating_limit:
             if form.program.rating.id > rating_limit.id:
-                return self.send_email(form,**kwargs)
                 form.save()
+                return self.send_email(form,**kwargs)
         form.save()
         return HttpResponseRedirect(reverse_lazy('program_list_view'))
 
@@ -142,13 +142,8 @@ class QueueCreateView(CreateView):
         from_email = EMAIL_HOST_USER
         to_email = self.request.user.profile.parent.email
         if subject and message and from_email:
-            try:
-                send_mail(subject, message, from_email, [str(to_email)])
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
+            send_mail(subject, message, from_email, [str(to_email)])
             return HttpResponseRedirect(reverse_lazy('program_list_view'))
-        else:
-            return HttpResponse('Make sure all fields are entered and valid.')
 
 class QueueListView(ListView):
     model = QueueProgram

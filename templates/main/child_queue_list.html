@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% load bootstrap_pagination %}
+{% load staticfiles %}
 
 {% block content %}
 
     <!--/slider-100-->
-
+{% if request.user.profile.parent == None %}
     <div class="container">
 
       <table>
@@ -44,5 +45,9 @@
     {% bootstrap_paginate page_obj range=10 show_prev_next="false" show_first_last="true" %}
 
     </div>
-
+    {% else %}
+    <div class="container">
+      <h2>Sorry, but you don't have access to this page!</h2>
+    </div>
+    {% endif %}
     {% endblock %}

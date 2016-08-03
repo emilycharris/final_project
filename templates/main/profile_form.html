@@ -1,6 +1,7 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% block content %}
-
+{% if request.user.profile.parent == None %}
 <div class="container">
   {% if user.profile.display_name %}
   <h1>Update {{user.profile.display_name}}'s Profile</h1>
@@ -46,6 +47,10 @@
   <br><br>
 
 </div>
-
+{% else %}
+<div class="container">
+  <h2>Sorry, but you don't have access to this page!</h2>
+</div>
+{% endif %}
 
 {% endblock %}
