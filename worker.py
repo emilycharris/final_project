@@ -2,6 +2,7 @@ import requests
 import csv
 from bs4 import BeautifulSoup
 import datetime
+import os
 
 # def create_programs():
 #     beginning_record = 1
@@ -15,9 +16,9 @@ import datetime
 #
 #
 #         while beginning_record <= 20000:
-#             key = ""
+#             key = api_key
 #             base_url = "https://api-public.guidebox.com/v1.43/US/"
-#             show_url = base_url + key + '/shows/all/{}/1'.format(beginning_record)
+#             show_url = base_url + api_key + '/shows/all/{}/1'.format(beginning_record)
 #             response = requests.get(show_url).json()
 #             for show in response['results']:
 #                 guidebox_id = show['id']

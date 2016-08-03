@@ -39,7 +39,7 @@ class CreateChildView(CreateView):
 class ParentProfileUpdateView(UpdateView):
     model = Profile
     fields = ['display_name', 'email', 'photo']
-    success_url = reverse_lazy('children_profile_list_view')
+    success_url = reverse_lazy('program_list_view')
 
     def get_object(self, queryset=None):
         return self.request.user.profile
