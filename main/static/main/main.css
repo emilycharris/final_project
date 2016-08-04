@@ -45,3 +45,7 @@ aside .wrap{
 #footerwidth.top-part{
   border-bottom: 0px;
 }
+
+#right{
+  float: right;
+}

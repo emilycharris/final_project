@@ -18,8 +18,8 @@
             <ul class="socials-member">
               <li class="first-title">Edit Profile</li>
                 <li><a href="{% url 'profile_update_view'%}"><i class="icon-edit"></i></a></li>
-                <li class='first-title'>Edit Queue</li>
-                <li><a href="{% url 'queue_list_view' %}"><i class="icon-edit"></i></a></li>
+                <li id='right' class='first-title'>Edit Queue</li>
+                <li id='right'><a href="{% url 'queue_list_view' %}"><i class="icon-edit"></i></a></li>
             </ul>
         </div>
 
@@ -40,8 +40,9 @@
                 <li><a href="{% url 'child_profile_update_view' object.pk %}"><i class="icon-edit"></i></a></li>
 
                 {% if object.rating_limit %}
-                <li class='first-title'>Edit Queue</li>
-                <li><a href="{% url 'child_queue_list_view' object.pk %}"><i class="icon-edit"></i></a></li>
+                <li id='right'><a href="{% url 'child_queue_list_view' object.pk %}"><i class="icon-edit"></i></a></li>
+                <li id='right' class='first-title'>Edit Queue</li>
+
                 {% endif %}
 
             </ul>
