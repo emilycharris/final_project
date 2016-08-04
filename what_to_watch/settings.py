@@ -165,7 +165,7 @@ AWS_SECRET_ACCESS_KEY = os.getenv('aws_secret_access_key')
 
 
 if AWS_STORAGE_BUCKET_NAME:
-
+    AWS_S3_FILE_OVERWRITE = False
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
     # STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     # STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
