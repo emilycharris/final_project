@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.core.urlresolvers import reverse_lazy
+from django.core.urlresolvers import reverse_lazy, reverse
 from django.conf.urls import url, include
 from main.models import Program, Profile, Queue, Rating, QueueProgram, FamilyQueue
 from django.http import HttpResponseRedirect
@@ -91,6 +91,11 @@ class ProgramListView(ListView):
         for item in program_queryset:
             queue_list.append(item.program.name)
         context['queue_list'] = queue_list
+        page = self.request.GET.get('page')
+        if page:
+            context['page'] = page
+        else:
+            context['page'] = "1"
         return context
 
 class ProgramDetailView(DetailView):
@@ -116,6 +121,7 @@ class QueueCreateView(CreateView):
         form = form.save(commit=False)
         queue = self.kwargs.get('pk')
         program = self.kwargs.get('program_pk')
+        page = self.kwargs.get('page')
         form.queue = Queue.objects.get(id=queue)
         form.program = Program.objects.get(id=program)
         rating_limit = self.request.user.profile.rating_limit
@@ -124,7 +130,7 @@ class QueueCreateView(CreateView):
                 form.save()
                 return self.send_email(form,**kwargs)
         form.save()
-        return HttpResponseRedirect(reverse_lazy('program_list_view'))
+        return HttpResponseRedirect(reverse('program_list_view') + "?page={}".format(page))
 
     def send_email(self, form, **kwargs):
         rating_limit = self.request.user.profile.rating_limit
@@ -152,20 +158,14 @@ class QueueCreateView(CreateView):
         to_email = self.request.user.profile.parent.email
         if subject and message and from_email:
             send_mail(subject, message, from_email, [str(to_email)])
-            return HttpResponseRedirect(reverse_lazy('program_list_view'))
+            page = self.kwargs.get('page')
+            return HttpResponseRedirect(reverse('program_list_view') + "?page={}".format(page))
 
 class QueueListView(ListView):
     model = QueueProgram
     paginate_by = 16
 
     def get_queryset(self, **kwargs):
-        # programs = QueueProgram.objects.all()
-        # queue = self.request.user.queue.id
-        # search = self.request.GET.get('search')
-        # if search:
-        #     search_name = search.replace("+", " ").lower()
-        #     return QueueProgram.objects.filter(queue=self.request.user.queue.id).filter(program__icontains=search_name)
-        # else:
         return QueueProgram.objects.filter(queue=self.request.user.queue.id)
 
 class ChildQueueListView(ListView):

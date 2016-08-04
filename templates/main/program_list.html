@@ -34,15 +34,16 @@
                   <h3><a href={% url 'program_detail_view' object.pk %}>{{object.name|truncatechars:25}}</a></h3>
                     {% if object.name in queue_list %}
                     <span>{{object.rating}} <a class="btn btn-success pull-right" type="button"><i class=" icon-ok"></i></a></span>
+
                     {% else %}
-                    <span>{{object.rating}} <a class="btn btn-inverse pull-right" type="button" href="{% url 'queue_create_view' user.queue.id object.pk %}"><i class=" icon-plus"></i></a></span>
+                    <span>{{object.rating}} <a class="btn btn-inverse pull-right" type="button" href="{% url 'queue_create_view' user.queue.id object.pk page%}"><i class=" icon-plus"></i></a></span>
                     {% endif %}
               </div>
           </div>
           {% endfor %}
     </div>
     <div class="pagination pagination-centered pagination-large">
-      {% bootstrap_paginate page_obj range=5 show_prev_next="false" show_first_last="true" %}
+      {% bootstrap_paginate page_obj range=5 show_prev_next="true" show_first_last="false" %}
     </div>
 
       </div>
