@@ -2,43 +2,73 @@
 {% load staticfiles %}
 
 {% block content %}
+
+
+
 <div class="container">
-  <br>
-  <img src="{{object.banner}}" alt="" class='centered' enctype=multipart/form-data/><hr>
-
-  <h1><div class='span8 heading'>{{object.name}}  </div>
-  <div class="span2 heading"><a class="btn btn-primary pull-right" type="button" href="{% url 'queue_create_view' user.queue.id object.pk %}">Add to Queue</a></div>
-  <div class="span2 heading"><a class='btn btn-primary pull-right' href="javascript:history.go(-1)">Return to Search</a></div>
-</h1>
 <br>
-<br>
+    <div class="row">
+        <!-- Left content
+            ===========================================================================================-->
+        <div class="span5">
+            <div id="myCarousel" class="carousel slide proj-det">
+                <!-- Carousel items -->
+                <div class="carousel-inner wrap">
+                    <div class="active item" id='aboutme'><img alt=""  src="{{object.thumbnail}}"></div>
+                    {# <div class="item"><img alt=""  src="images/img/proj2.jpg" ></div>#}
+                    {# <div class="item"><img alt=""  src="images/img/proj3.jpg" ></div>#}
+                </div>
+                <br><a href="javascript:history.go(-1)">Return to Search</a>
+
+            </div>
+
+        </div>
+
+
+        <!-- aside
+            =============================================================================================-->
+        <aside class="span7">
+
+            <!-- About Project -->
+            <div class="wrap">
+                <h1>{{object}}</h1>
+                <p>
+                  {{object.rating}}<br/>
+                  {{object.runtime}} min runtime
+                        <br/><br/>
+                    {{object.overview}}
+                </p>
+            </div><!--/About Project-->
+            <!-- Description -->
+
+
+
+                </aside>
+                <div class="span12">
+
+                {% if request.user.profile.parent == None %}
+                <br>
+                <h4>For Parents Only:</h4>
+                <p><em>This information is provided to those signed in with a parent account only.  The content may be inappropriate for some users, but is provided to assist parents make informed decisions.</em></p>
+                <hr>
+                  <p>Review: <br>{{object.review}}</p><br>
+                  <p>Positive Message: <br>{{object.positive_message}}</p><br>
+                  <p>Positive Role Model: <br>{{object.positive_role_model}}</p><br>
+                  <p>Violence Warning: <br>{{object.violence}}</p><br>
+                  <p>Sexual Content Warning: <br>{{object.sex}}</p><br>
+                  <p>Language Warning: <br>{{object.language}}</p><br>
+                  <p>Consumerism Warning: <br>{{object.consumerism}}</p><br>
+                  <p>Substance Warning: <br>{{object.substance}}</p><br>
+                  {% endif %}
+
+
+                  </div><!-- /Description -->
+
+          </div>
 
 
 
 
-  <p>Rating: {{object.rating}}</p><br>
-  <p>Runtime: {{object.runtime}}</p><br>
-  <p>Overview: {{object.overview}}</p><br>
-
-{% if request.user.profile.parent == None %}
-<br>
-<h4>For Parents Only:</h4>
-<p><em>This information is provided to those signed in with a parent account only.  The content may be inappropriate for some users, but is provided to assist parents make informed decisions.</em></p>
-<hr>
-  <p>Review: <br>{{object.review}}</p><br>
-  <p>Positive Message: <br>{{object.positive_message}}</p><br>
-  <p>Positive Role Model: <br>{{object.positive_role_model}}</p><br>
-  <p>Violence Warning: <br>{{object.violence}}</p><br>
-  <p>Sexual Content Warning: <br>{{object.sex}}</p><br>
-  <p>Language Warning: <br>{{object.language}}</p><br>
-  <p>Consumerism Warning: <br>{{object.consumerism}}</p><br>
-  <p>Substance Warning: <br>{{object.substance}}</p><br>
-  {% endif %}
-  <br>
-  <a class='btn btn-primary pull-right' href="javascript:history.go(-1)">Return to Search</a>
-  <a class="btn btn-primary pull-right" type="button" href="{% url 'queue_create_view' user.queue.id object.pk %}">Add to Queue</a></span>
-
-<br><br>
-</div>
+</div><!--/container-->
 
 {% endblock %}
