@@ -15,11 +15,9 @@
             <h4>{{user.profile.display_name}}</h4>
             <span class="job">{{user.username}}</span>
 
-            <ul class="socials-member">
-              <li class="first-title">Edit Profile</li>
-                <li><a href="{% url 'profile_update_view'%}"><i class="icon-edit"></i></a></li>
-                <li id='right' class='first-title'>Edit Queue</li>
-                <li id='right'><a href="{% url 'queue_list_view' %}"><i class="icon-edit"></i></a></li>
+            <ul class="socials-member2" style='font-size: 18px'>
+              <li><a href="{% url 'profile_update_view'%}">Edit Profile<i class="icon-edit"></i></a></li>
+              <li id='right'><a href="{% url 'queue_list_view' %}">Edit Queue<i class="icon-edit"></i></a></li>
             </ul>
         </div>
 
@@ -35,13 +33,11 @@
             <span class="job">{{object.user.username}}</span>
             {% endif %}
 
-            <ul class="socials-member">
-              <li><a href="{% url 'child_profile_update_view' object.pk %}"><i class="icon-edit"></i></a></li>
-              <li class="first-title">Edit Profile</li>
+            <ul class="socials-member2" style='font-size: 18px'>
+              <li><a href="{% url 'child_profile_update_view' object.pk %}">Edit Profile<i class="icon-edit"></i></a></li>
 
                 {% if object.rating_limit %}
-                <li id='right'><a href="{% url 'child_queue_list_view' object.pk %}"><i class="icon-edit"></i></a></li>
-                <li id='right' class='first-title'>Edit Queue</li>
+                <li id='right'><a href="{% url 'child_queue_list_view' object.pk %}">Edit Queue<i class="icon-edit"></i></a></li>
 
                 {% endif %}
 

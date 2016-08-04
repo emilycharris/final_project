@@ -49,3 +49,28 @@ aside .wrap{
 #right{
   float: right;
 }
+
+
+.socials-member2 {
+	margin-left: 0;
+	padding: 10px;
+	background: #61a8f0;
+	color: #fff;
+	overflow: hidden;
+}
+
+.socials-member2 li {
+	display: inline-block;
+	float: left;
+	line-height: 18px;
+}
+
+.socials-member2 li a {
+	color: #fff;
+	font-size: 18px;
+}
+
+.socials-member2 li a:hover {
+	text-decoration: none;
+	color: #333;
+}
