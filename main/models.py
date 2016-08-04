@@ -102,6 +102,15 @@ class FamilyQueue(models.Model):
                     program_list.append(program)
             return (program_list, rating_limit_name)
 
+    @property
+    def displayed_name(self):
+        for profile in self.profile_set.all():
+            if profile.display_name:
+                return profile.display_name
+            else:
+                return self.user
+
+
 
 @receiver(post_save, sender='auth.User')
 def create_user_profile(**kwargs):

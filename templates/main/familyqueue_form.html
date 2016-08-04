@@ -2,16 +2,18 @@
 {% load staticfiles %}
 {% block content %}
 <div class="container">
-  <form class="" action="" method="post">
+  <form class="form-horizontal" action="" method="post">
+      <div class="control-group">
     {% csrf_token %}
+    <br>
   <h4>Select those who will be watching:</h4>
   {{form}}
-    <br>
+    <br><br>
   Hold down "Control", or "Command" on a Mac, to select more than one.
     <br>
     <br>
     <button type="submit" class="btn btn-danger">Submit Group</button>
-
+    </div>
 
     <div class="control-group">
     {% if form.errors %}
@@ -22,9 +24,6 @@
        {% endfor %}
     {% endif %}
     </div>
-
-
-
   </form>
   <br><br>
 </div>

@@ -10,7 +10,7 @@
     <div class="row">
 
       <div class="span3 wrap">
-        <img src={{user.profile.photo_url}} height='250px' width='250px' alt="" >
+        <img src={{user.profile.photo_url}} class='profile-pic' alt="" >
             <h4>{{user.profile.display_name}}</h4>
             <span class="job">{{user.username}}</span>
 
@@ -25,10 +25,13 @@
 
       {% for object in object_list %}
       <div class="span3 wrap">
-          <img src={{object.photo_url}} height='250px' width='250px' alt="" >
+          <img src={{object.photo_url}} class='profile-pic' alt="" >
             <h4>{{object.display_name}}</h4>
+            {% if object.rating_limit %}
             <span class="job">{{object.user.username}} ({{object.rating_limit}})</span>
-
+            {% else %}
+            <span class="job">{{object.user.username}}</span>
+            {% endif %}
             <ul class="socials-member">
               <li class="first-title">Edit Profile</li>
                 <li><a href="{% url 'child_profile_update_view' object.pk %}"><i class="icon-edit"></i></a></li>

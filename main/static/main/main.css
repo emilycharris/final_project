@@ -15,3 +15,16 @@
     border:0;
     background:transparent;
 }
+
+.profile-pic{
+  height: 250px;
+  width: 250px;
+}
+
+#list-header{
+  height: 45px;
+}
+
+#searchbar{
+  text-align: right;
+}
