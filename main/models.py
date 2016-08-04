@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from datetime import datetime
+from django.contrib.staticfiles.templatetags.staticfiles import static
 
 # Create your models here.
 
@@ -29,6 +30,8 @@ class Profile(models.Model):
     def photo_url(self):
         if self.photo:
             return self.photo.url
+        else:
+            return static('main/theme_color_4/images/smiley-face-emoticon-avatar-brand.png')
 
 class Program(models.Model):
     name = models.CharField(max_length=500)

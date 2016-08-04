@@ -111,7 +111,6 @@ class QueueProgramDetailView(DetailView):
     def get_queryset(self, **kwargs):
         queueprogram_id = self.kwargs.get('pk')
         program_id = queueprogram_id.program.id
-        return program_id
 
 class QueueCreateView(CreateView):
     model = QueueProgram

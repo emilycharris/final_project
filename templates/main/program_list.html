@@ -30,7 +30,6 @@
           <div class="span3 features">
             <div class="portfolio">
               <a href="{% url 'program_detail_view' object.pk %}"><img src={{object.thumbnail}} alt="" ></a>
-
                   <h3><a href={% url 'program_detail_view' object.pk %}>{{object.name|truncatechars:25}}</a></h3>
                     {% if object.name in queue_list %}
                     <span>{{object.rating}} <a class="btn btn-success pull-right" type="button"><i class=" icon-ok"></i></a></span>
