@@ -129,12 +129,12 @@
             <div class="row">
                 <!-- Links
                 ============================= -->
-                <div class="span4">
-                    <div class="top-part">
+                <div class="span12">
+                    <div class="top-part" id='footerwidth'>
                         <ul class="footer-links">
                             <li><a href="{% url 'index_view' %}">Home</a></li>
-                            <li><a href="">About me</a></li>
-                            <li><a href="">Contact me</a></li>
+                            <li class='footerlink'><a href="{% url 'about_me_template_view' %}">About me</a></li>
+                            {# <li><a href="">Contact me</a></li>#}
                         </ul>
                     </div>
                     {# <div class="socials">#}

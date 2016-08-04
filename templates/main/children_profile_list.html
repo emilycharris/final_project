@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load bootstrap_pagination %}
 {% load staticfiles %}
 {% block content %}
 
@@ -27,27 +28,33 @@
       <div class="span3 wrap">
           <img src={{object.photo_url}} class='profile-pic' alt="" >
             <h4>{{object.display_name}}</h4>
+
             {% if object.rating_limit %}
             <span class="job">{{object.user.username}} ({{object.rating_limit}})</span>
             {% else %}
             <span class="job">{{object.user.username}}</span>
             {% endif %}
+
             <ul class="socials-member">
               <li class="first-title">Edit Profile</li>
                 <li><a href="{% url 'child_profile_update_view' object.pk %}"><i class="icon-edit"></i></a></li>
+
                 {% if object.rating_limit %}
                 <li class='first-title'>Edit Queue</li>
                 <li><a href="{% url 'child_queue_list_view' object.pk %}"><i class="icon-edit"></i></a></li>
                 {% endif %}
+
             </ul>
         </div>
         {% endfor %}
 
-
-
-
     </div>
     <a href="{% url 'create_child_view' %}">Add Family Members</a>
+
+    <div class="pagination pagination-centered pagination-large">
+      {% bootstrap_paginate page_obj range=5 show_prev_next="false" show_first_last="true" %}
+    </div>
+
 </div>
 {% else %}
 <div class="container">

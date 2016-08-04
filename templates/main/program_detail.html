@@ -5,7 +5,17 @@
 <div class="container">
   <br>
   <img src="{{object.banner}}" alt="" class='centered' enctype=multipart/form-data/><hr>
-  <h1 class='heading'>{{object.name}}</h1>
+
+  <h1><div class='span8 heading'>{{object.name}}  </div>
+  <div class="span2 heading"><a class="btn btn-primary pull-right" type="button" href="{% url 'queue_create_view' user.queue.id object.pk %}">Add to Queue</a></div>
+  <div class="span2 heading"><a class='btn btn-primary pull-right' href="javascript:history.go(-1)">Return to Search</a></div>
+</h1>
+<br>
+<br>
+
+
+
+
   <p>Rating: {{object.rating}}</p><br>
   <p>Runtime: {{object.runtime}}</p><br>
   <p>Overview: {{object.overview}}</p><br>
@@ -24,6 +34,11 @@
   <p>Consumerism Warning: <br>{{object.consumerism}}</p><br>
   <p>Substance Warning: <br>{{object.substance}}</p><br>
   {% endif %}
+  <br>
+  <a class='btn btn-primary pull-right' href="javascript:history.go(-1)">Return to Search</a>
+  <a class="btn btn-primary pull-right" type="button" href="{% url 'queue_create_view' user.queue.id object.pk %}">Add to Queue</a></span>
+
+<br><br>
 </div>
 
 {% endblock %}

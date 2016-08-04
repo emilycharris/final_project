@@ -28,3 +28,20 @@
 #searchbar{
   text-align: right;
 }
+
+#aboutme{
+  width: 400px;
+}
+
+aside .wrap{
+  margin-bottom: 0px;
+}
+
+.footerlink{
+  padding-left: 40px;
+
+}
+
+#footerwidth.top-part{
+  border-bottom: 0px;
+}

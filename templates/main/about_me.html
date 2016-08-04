@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+
+<div class="container">
+<br>
+    <div class="row">
+        <!-- Left content
+            ===========================================================================================-->
+        <div class="span5">
+            <div id="myCarousel" class="carousel slide proj-det">
+                <!-- Carousel items -->
+                <div class="carousel-inner wrap">
+                    <div class="active item" id='aboutme'><img alt=""  src="{% static 'main/theme_color_4/images/emily_headshot.jpg' %}"></div>
+                    {# <div class="item"><img alt=""  src="images/img/proj2.jpg" ></div>#}
+                    {# <div class="item"><img alt=""  src="images/img/proj3.jpg" ></div>#}
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- aside
+            =============================================================================================-->
+        <aside class="span7">
+
+            <!-- About Project -->
+            <div class="wrap">
+                <h1>Emily Harris</h1>
+                <p>
+                  <a href="https://github.com/emilycharris"><i class="icon-github"></i> github.com/emilycharris</a><br/>
+                  <a href="http://www.emilyharris.io"><i class="icon-laptop"></i>www.emilyharris.io</a>
+                        <br/><br/>
+                    Emily is a recent graduate of The Iron Yard in Greenville, South Carolina.  During the 12-week certification, she learned
+                    backend web development including Python and Django.  Her recently-acquired skills are detailed below.  FamilyTV.online is
+                    part of her professional portfolio which will be available soon at www.emilyharris.io.
+                </p>
+            </div><!--/About Project-->
+
+            <!-- Description -->
+            <div class="span3">
+                <h4>Skills</h4>
+                <ul class="unstyled">
+                    <li><i class="icon-star-empty"></i>Python</li>
+                    <li><i class="icon-star-empty"></i>Django</li>
+                    <li><i class="icon-star-empty"></i> Object Oriented Programming</li>
+                    <li><i class="icon-star-empty"></i> Functional Programming</li>
+                    <li><i class="icon-star-empty"></i> Relational Databases</li>
+
+
+                </ul>
+              </div><!-- /Description -->
+
+                <div class="span3">
+                    <h4></h4>
+                    <br><br>
+                    <ul class="unstyled">
+                        <li><i class="icon-star-empty"></i> RESTful APIs</li>
+                        <li><i class="icon-star-empty"></i> Version Control</li>
+                        <li><i class="icon-star-empty"></i> HTML & CSS</li>
+                        <li><i class="icon-star-empty"></i> Deployment</li>
+
+                    </ul>
+            </div><!-- /Description -->
+          </div>
+
+        </aside>
+
+
+
+</div><!--/container-->
+{% endblock %}

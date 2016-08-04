@@ -29,7 +29,8 @@
           {% for object in object_list %}
           <div class="span3 features">
             <div class="portfolio">
-                  <img src={{object.thumbnail}} alt="" >
+              <a href="{% url 'program_detail_view' object.pk %}"><img src={{object.thumbnail}} alt="" ></a>
+
                   <h3><a href={% url 'program_detail_view' object.pk %}>{{object.name|truncatechars:25}}</a></h3>
                     {% if object.name in queue_list %}
                     <span>{{object.rating}} <a class="btn btn-success pull-right" type="button"><i class=" icon-ok"></i></a></span>
@@ -39,12 +40,9 @@
               </div>
           </div>
           {% endfor %}
-
-
-
     </div>
-    <div class="pagination pagination-centered">
-      {% bootstrap_paginate page_obj range=10 show_prev_next="false" show_first_last="true" %}
+    <div class="pagination pagination-centered pagination-large">
+      {% bootstrap_paginate page_obj range=5 show_prev_next="false" show_first_last="true" %}
     </div>
 
       </div>

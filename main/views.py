@@ -59,6 +59,7 @@ class ChildProfileUpdateView(UpdateView):
 
 class ChildrenProfileListView(ListView):
     model = Profile
+    paginate_by = 8
     template_name = 'main/children_profile_list.html'
 
     def get_queryset(self):
@@ -98,6 +99,14 @@ class ProgramDetailView(DetailView):
     def get_queryset(self, **kwargs):
         program_id = self.kwargs.get('pk')
         return Program.objects.filter(id=program_id)
+
+class QueueProgramDetailView(DetailView):
+    model = QueueProgram
+
+    def get_queryset(self, **kwargs):
+        queueprogram_id = self.kwargs.get('pk')
+        program_id = queueprogram_id.program.id
+        print(program_id)
 
 class QueueCreateView(CreateView):
     model = QueueProgram
@@ -223,6 +232,10 @@ class FamilyQueueTemplateView(TemplateView):
             return context
         else:
             pass
+
+
+class AboutMeTemplateView(TemplateView):
+    template_name = 'main/about_me.html'
 
 def login_success(request):
     profile = Profile.objects.get(user=request.user)
