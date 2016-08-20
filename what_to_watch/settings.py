@@ -51,7 +51,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -144,7 +144,7 @@ EMAIL_PORT = 587
 
 api_key=os.getenv('api_key')
 
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 STATIC_URL = '/static/'
@@ -154,28 +154,28 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR
 
 
-AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
-    'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
-    'Cache-Control': 'max-age=94608000',
-}
+# AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
+    # 'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+    # 'Cache-Control': 'max-age=94608000',
+# }
 
-AWS_STORAGE_BUCKET_NAME = os.getenv('aws_storage_bucket_name')
-AWS_ACCESS_KEY_ID = os.getenv('aws_access_key_id')
-AWS_SECRET_ACCESS_KEY = os.getenv('aws_secret_access_key')
+# AWS_STORAGE_BUCKET_NAME = os.getenv('aws_storage_bucket_name')
+# AWS_ACCESS_KEY_ID = os.getenv('aws_access_key_id')
+# AWS_SECRET_ACCESS_KEY = os.getenv('aws_secret_access_key')
 
 
-if AWS_STORAGE_BUCKET_NAME:
-    AWS_S3_FILE_OVERWRITE = False
-    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# if AWS_STORAGE_BUCKET_NAME:
+    # AWS_S3_FILE_OVERWRITE = False
+    # AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
     # STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     # STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
-    STATICFILES_LOCATION = 'static'
-    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-    STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+    # STATICFILES_LOCATION = 'static'
+    # STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    # STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 
-    MEDIAFILES_LOCATION = 'media'
-    MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    # MEDIAFILES_LOCATION = 'media'
+    # MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+    # DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
 
 
