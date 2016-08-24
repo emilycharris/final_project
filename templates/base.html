@@ -26,6 +26,8 @@
 	<!-- Start CSS Style
     =======================================================================================-->
     <!-- Bootstrap -->
+    <link rel="stylesheet" href="{%static 'main/main.css' %}" media="screen" charset="utf-8">
+
     <link rel="stylesheet" href="{% static 'main/theme_color_4/bootstrap/css/bootstrap.css' %}" />
     <!-- Main Style -->
     <link rel="stylesheet" href="{% static 'main/theme_color_4/css/style.css' %}" />
@@ -34,7 +36,6 @@
     <!--[if IE 7]>
     <link rel="stylesheet" href="font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
-    <link rel="stylesheet" href="{%static 'main/main.css' %}" media="screen" charset="utf-8">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -46,7 +47,7 @@
 
 
 <body>
-
+ <div id="wrap">
     <header>
     	<div class="container">
             <div class="row">
@@ -122,6 +123,7 @@
   {% block content %}
 
   {% endblock %}
+</div>
 
 
     <footer>
@@ -134,30 +136,11 @@
                         <ul class="footer-links">
                             <li><a href="{% url 'index_view' %}">Home</a></li>
                             <li class='footerlink'><a href="{% url 'about_me_template_view' %}">About me</a></li>
-                            {# <li><a href="">Contact me</a></li>#}
                         </ul>
                     </div>
-                    {# <div class="socials">#}
-                      {# <span>Stay Connected</span>#}
-                        {# <a href="#"><i class="icon-facebook-sign"></i></a>#}
-                        {# <a href="#"><i class="icon-twitter-sign"></i></a>#}
-                        {# <a href="#"><i class="icon-google-plus-sign"></i></a>#}
-                        {# <a href="#"><i class="icon-linkedin-sign"></i></a>#}
-                        {# <a href="#"><i class="icon-github-sign"></i></a>#}
-                    {# </div>#}
+
                 </div>
-                <!-- TWITTER
-                ============================= -->
-                {# <div class="span4">#}
-                  {# <div class="top-part">Twitter Feed</div>#}
-                  {# <div class="tweet"></div>#}
-                {# </div>#}
-                <!-- FLICKR
-                ============================= -->
-                {# <div class="span4">#}
-                  {# <div class="top-part">Flickr Feed</div>#}
-                  {# <ul class="basicuse thumbs"></ul>#}
-                {# </div>#}
+
             </div>
         </div>
           <div class="bottom-area">
@@ -166,8 +149,8 @@
                   <div class="span4">
                       Copyright © 2013 Cordic. All rights reserved.
                     </div>
-                    <div class="span4">
-                        For demonstration purposes only.  No data is saved.
+                    <div class="span4" style='text-align: center'>
+                        <em>For demonstration purposes only</em>
                       </div>
                       <div class="span4 text-right">
                         Site Developed by Emily Harris © 2016
@@ -189,6 +172,5 @@
     {# <script src="js/jflickrfeed.min.js"></script><!-- jQuery Flickr -->#}
     <script src="{% static 'main/theme_color_4/js/jquery.ui.totop.js' %}"></script><!-- TOTOP -->
     <script src="{% static 'main/theme_color_4/js/custom.js' %}"></script>
-
 </body>
 </html>

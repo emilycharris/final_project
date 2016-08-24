@@ -18,8 +18,8 @@ body {
 	font-family: 'AmbleLight', Arial, Helvetica, sans-serif;
 	font-size: 13px;
   position: relative;
-  margin: 0;
-  padding-bottom: 6rem;
+  /*margin: 0;*/
+  /*padding-bottom: 6rem;*/
   min-height: 100%;}
 }
 
@@ -187,7 +187,8 @@ header .dropdown-menu li + li > a {
 
 .nav-pills {
 	float: right;
-	margin-top: 40px;
+	/*margin-top: 40px;*/
+  margin-top: 50px;
 }
 
 header .dropdown-menu {
@@ -893,10 +894,10 @@ footer {
 	background: #333;
 	margin-top: 40px;
 	color: #fff;
-	position: absolute;;
+	/*position: absolute;*/
 	left: 0;
 	bottom: 0;
-	height: auto;;
+	height: auto;
 	width: 100%;
 }
 
