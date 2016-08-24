@@ -892,7 +892,7 @@ a.accordion-toggle:hover {
 -------------------------------------------------------*/
 footer {
 	background: #333;
-	margin-top: 40px;
+	/*margin-top: 40px;*/
 	color: #fff;
 	/*position: absolute;*/
 	left: 0;
