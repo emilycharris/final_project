@@ -5272,7 +5272,19 @@ button.close {
 .visible-desktop {
   display: inherit !important;
 }
+
+
+
 @media (min-width: 768px) and (max-width: 979px) {
+
+  .bottom-area {
+    font-size: 10px;
+  }
+
+  .carousel-app p {
+    font-size: 10px;
+  }
+
   .hidden-desktop {
     display: inherit !important;
   }
@@ -5460,6 +5472,7 @@ button.close {
   }
 }
 @media (min-width: 768px) and (max-width: 979px) {
+
   .row {
     margin-left: -20px;
     *zoom: 1;
@@ -5475,7 +5488,8 @@ button.close {
   }
   [class*="span"] {
     float: left;
-    min-height: 1px;
+    min-height: 100%
+    /*min-height: 1px;*/
     margin-left: 20px;
   }
   .container,
@@ -5497,7 +5511,8 @@ button.close {
     width: 538px;
   }
   .span8 {
-    width: 476px;
+    /*width: 476px;*/
+    width: 100%
   }
   .span7 {
     width: 414px;
@@ -5509,7 +5524,8 @@ button.close {
     width: 290px;
   }
   .span4 {
-    width: 228px;
+    /*width: 228px;*/
+    width: 979px;
   }
   .span3 {
     width: 166px;
