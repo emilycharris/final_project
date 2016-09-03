@@ -5472,6 +5472,9 @@ button.close {
   }
 }
 @media (min-width: 768px) and (max-width: 979px) {
+  img.logo {
+    max-width: 250%;
+  }
 
   .row {
     margin-left: -20px;
@@ -5489,7 +5492,6 @@ button.close {
   [class*="span"] {
     float: left;
     min-height: 100%
-    /*min-height: 1px;*/
     margin-left: 20px;
   }
   .container,
@@ -5524,9 +5526,9 @@ button.close {
     width: 290px;
   }
   .span4 {
-    /*width: 228px;*/
-    width: 979px;
+    width: 228px;
   }
+
   .span3 {
     width: 166px;
   }

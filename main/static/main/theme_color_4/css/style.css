@@ -1478,9 +1478,19 @@ video {
   .nav-pills {
     margin-top: 20px;
   }
-  
+
+  .carousel-app a.btn {
+    font-size: 20px;
+    padding: 12px;
+    /*width: 30%;*/
+  }
+
   .right-data-app, .left-data-app {
   	width: 100%
+  }
+
+  .right-data-app img {
+    width: 90%
   }
 
   .carousel-app h3 {
@@ -1585,5 +1595,17 @@ body {
 	display: block;
 	margin: 0 auto;
 	text-align: center;
+}
+#footerwidth.top-part {
+  padding: 0px;
+  margin: 0px
+}
+
+.bottom-area {
+  text-align: center;
+}
+
+.span4 text-right {
+  text-align: center;
 }
 }
