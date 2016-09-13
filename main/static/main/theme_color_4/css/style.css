@@ -54,7 +54,7 @@ h4 {
 }
 
 .wrap {
-	margin-bottom: 50px;
+	/*margin-bottom: 50px;*/
 	overflow: hidden;
 	display: block;
 }
@@ -109,20 +109,9 @@ header .container {
 
 .slider-100 {
 	background: #61a8f0;
-	margin-bottom: 40px;
+	/*margin-bottom: 40px;*/
 }
 
-.slider-100-2 {
-	position: relative;
-	margin-bottom: 40px;
-}
-
-.slider-100-2 .theme-color-red-bg, .theme-color {
-	position: absolute;
-	width: 100%;
-	height: 50%;
-	top: 0;
-}
 
 /* NAV
 ------------------------------------------------------*/
@@ -891,7 +880,7 @@ a.accordion-toggle:hover {
 -------------------------------------------------------*/
 footer {
 	background: #333;
-	margin-top: 40px;
+	/*margin-top: 40px;*/
 	color: #fff;
 	/*position: absolute;*/
 	left: 0;
@@ -1471,6 +1460,28 @@ video {
   .bottom-area {
     font-size: 8px;
   }
+
+
+  .slider-100 {
+  	background: #61a8f0;
+    height: 550px;
+  	/*margin-bottom: 40px;*/
+  }
+
+  .wrap {
+    min-height: 100%;
+    /*height: auto;*/
+    /* Negative indent footer by its height */
+    margin: 0 auto -90px;
+    /* Pad bottom by footer height */
+    /*padding: 0 0 40px;*/
+  }
+
+  /* Set the fixed height of the footer here */
+  footer {
+    height: 90px;
+  }
+
 }
 
 @media (max-width: 991px) and (min-width: 768px) {
@@ -1503,8 +1514,8 @@ video {
   }
 
   .carousel-app p {
-    font-size: 25px;
-    line-height: 35px;
+    font-size: 20px;
+    line-height: 25px;
   }
 
   .nav-tabs > li > a, .nav-pills > li > a {
@@ -1586,7 +1597,6 @@ body {
 .shadow {
 	display: none;
 }
-.slider-100-2 {margin-bottom: 0 }
 
 .welcome {
 	margin-top: 20px;
