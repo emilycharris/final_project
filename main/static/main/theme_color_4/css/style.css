@@ -1555,6 +1555,9 @@ video {
 }
 
 @media (max-width: 767px) {
+  .carousel-app p {
+  	font-size: 10px;
+  }
 body {
 	padding: 0 !important;
 
@@ -1612,10 +1615,11 @@ body {
 }
 
 .bottom-area {
-  text-align: center;
+  /*text-align: center;*/
+  font-size: 5px;
 }
 
 .span4 text-right {
-  text-align: center;
+  /*text-align: center;*/
 }
 }

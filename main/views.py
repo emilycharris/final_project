@@ -59,7 +59,7 @@ class ChildProfileUpdateView(UpdateView):
 
 class ChildrenProfileListView(ListView):
     model = Profile
-    paginate_by = 8
+    paginate_by = 24
     template_name = 'main/children_profile_list.html'
 
     def get_queryset(self):

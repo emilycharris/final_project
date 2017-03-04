@@ -120,47 +120,48 @@
             </div><!--/row-->
         </div>
     </header>
-  {% block content %}
+      {% block content %}
 
-  {% endblock %}
+      {% endblock %}
+
 </div>
 
+  <footer>
+    <div class="container">
+          <div class="row">
+              <!-- Links
+              ============================= -->
+              <div class="span12">
+                  <div class="top-part" id='footerwidth'>
+                      <ul class="footer-links">
+                          <li><a href="{% url 'index_view' %}">Home</a></li>
+                          <li class='footerlink'><a href="{% url 'about_me_template_view' %}">About me</a></li>
+                      </ul>
+                  </div>
 
-    <footer>
-      <div class="container">
-            <div class="row">
-                <!-- Links
-                ============================= -->
-                <div class="span12">
-                    <div class="top-part" id='footerwidth'>
-                        <ul class="footer-links">
-                            <li><a href="{% url 'index_view' %}">Home</a></li>
-                            <li class='footerlink'><a href="{% url 'about_me_template_view' %}">About me</a></li>
-                        </ul>
+              </div>
+
+          </div>
+      </div>
+        <div class="bottom-area">
+          <div class="container">
+              <div class="row">
+                <div class="span4">
+                    Copyright © 2013 Cordic. All rights reserved.
+                  </div>
+                  <div class="span4" style='text-align: center'>
+                      <em>For demonstration purposes only</em>
                     </div>
-
+                    <div class="span4 text-right">
+                      Site Developed by Emily Harris © 2016
+                    </div>
                 </div>
-
             </div>
         </div>
-          <div class="bottom-area">
-            <div class="container">
-                <div class="row">
-                  <div class="span4">
-                      Copyright © 2013 Cordic. All rights reserved.
-                    </div>
-                    <div class="span4" style='text-align: center'>
-                        <em>For demonstration purposes only</em>
-                      </div>
-                      <div class="span4 text-right">
-                        Site Developed by Emily Harris © 2016
-                      </div>
-                  </div>
-              </div>
-          </div>
 
 
-    </footer>
+  </footer>
+
 
     <script src="{% static 'main/theme_color_4/js/jquery.js' %}"></script>
     <script src="{% static 'main/theme_color_4/js/jquery.easing.1.3.js' %}"></script>

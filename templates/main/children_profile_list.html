@@ -4,9 +4,11 @@
 {% block content %}
 
 {% if request.user.profile.parent == None %}
-<div class="container">
+<div class="container" padding-bottom=50px>
 
   <h1>My Family</h1>
+  <a href="{% url 'create_child_view' %}">Add Family Members</a>
+
 
     <div class="row">
 
@@ -46,9 +48,8 @@
         {% endfor %}
 
     </div>
-    <a href="{% url 'create_child_view' %}">Add Family Members</a>
 
-    <div class="pagination pagination-centered pagination-large">
+    <div class="pagination pagination-centered pagination-small" padding-bottom=500px>
       {% bootstrap_paginate page_obj range=5 show_prev_next="false" show_first_last="true" %}
     </div>
 
