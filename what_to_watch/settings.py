@@ -143,6 +143,7 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+
 api_key=os.getenv('api_key')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
