@@ -1,7 +1,7 @@
 beautifulsoup4==4.4.1
 boto==2.42.0
 dj-database-url==0.4.1
-Django==1.9.7
+Django~=1.9.13
 django-bootstrap-form==3.2.1
 django-bootstrap-pagination==1.6.1
 django-extra-views==0.8.0
