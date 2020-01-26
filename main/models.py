@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from datetime import datetime
-from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.templatetags.static import static
 
 # Create your models here.
 
@@ -16,10 +16,10 @@ class Rating(models.Model):
         return self.rating
 
 class Profile(models.Model):
-    user = models.OneToOneField('auth.User')
+    user = models.OneToOneField('auth.User', on_delete=models.PROTECT)
     display_name = models.CharField(max_length=100, null=True, blank=True)
-    parent=models.ForeignKey('self', null=True, blank=True, related_name='child')
-    rating_limit = models.ForeignKey(Rating, null=True, blank=True)
+    parent=models.ForeignKey('self', null=True, blank=True, related_name='child', on_delete=models.PROTECT)
+    rating_limit = models.ForeignKey(Rating, null=True, blank=True, on_delete=models.PROTECT)
     email = models.EmailField(blank=True, null=True)
     photo = models.ImageField(upload_to='profile_photos', null=True, blank=True, max_length=500)
 
@@ -36,7 +36,7 @@ class Profile(models.Model):
 class Program(models.Model):
     name = models.CharField(max_length=500)
     guidebox_id = models.IntegerField()
-    rating = models.ForeignKey(Rating)
+    rating = models.ForeignKey(Rating, on_delete=models.PROTECT)
     runtime = models.IntegerField()
     thumbnail = models.ImageField(upload_to='program_thumbnails', null=True, blank=True, max_length=500)
     banner = models.ImageField(upload_to='program_banners', null=True, blank=True, max_length=500)
@@ -64,14 +64,14 @@ class Program(models.Model):
         return self.name
 
 class Queue(models.Model):
-    user = models.OneToOneField('auth.User')
+    user = models.OneToOneField('auth.User', on_delete=models.PROTECT)
 
     def __str__(self):
         return str(self.user)
 
 class QueueProgram(models.Model):  #thru table between queue and program
-    queue = models.ForeignKey(Queue)
-    program = models.ForeignKey(Program)
+    queue = models.ForeignKey(Queue, on_delete=models.PROTECT)
+    program = models.ForeignKey(Program, on_delete=models.PROTECT)
     network = models.CharField(max_length=100, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 

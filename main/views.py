@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, CreateView, UpdateView, ListView, DetailView, DeleteView
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.core.urlresolvers import reverse_lazy, reverse
+from django.urls import reverse_lazy, reverse
 from django.conf.urls import url, include
 from main.models import Program, Profile, Queue, Rating, QueueProgram, FamilyQueue
 from django.http import HttpResponseRedirect
@@ -12,8 +12,6 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.core.mail import send_mail
 from what_to_watch.settings import EMAIL_HOST_USER
-from django.shortcuts import render_to_response
-from django.template import RequestContext
 
 
 # Create your views here.
