@@ -27,7 +27,7 @@ SECRET_KEY = 'rl22rt^jxtp@r)f&de-jfhp_3emxuj%hjkt!4&8n#5fhdir!jj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'www.familytv.online', 'familytvonline.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'familytvonline.herokuapp.com']
 
 
 # Application definition
