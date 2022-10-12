@@ -14,6 +14,6 @@ The requirements of the project were as follows:
 - Integrate a form of image upload and storage.
 - Be deployed on the public Internet, with a service like Heroku.
 
-With these requirements in mind, I chose to build [familytvonline](https://familytvonline.herokuapp.com/).  familytvonline is a fully functioning web application that provides a means for families to watch TV together, all the while ensuring that the programming is both fairly selected and age-appropriate for all viewers.
+With these requirements in mind, I chose to build [familytvonline](https://familytv-online.onrender.com).  familytvonline is a fully functioning web application that provides a means for families to watch TV together, all the while ensuring that the programming is both fairly selected and age-appropriate for all viewers.
 
-The application was created using the Python programming language, as well as the Django web framework. Front-end development includes HTML, CSS, and Bootstrap. There are also API endpoints using Django's REST framework.  The application was successfully deployed to the web using Heroku and AWS S3.
+The application was created using the Python programming language, as well as the Django web framework. Front-end development includes HTML, CSS, and Bootstrap. There are also API endpoints using Django's REST framework.  The application was successfully deployed to the web using Render at the following address: https://familytv-online.onrender.com.
